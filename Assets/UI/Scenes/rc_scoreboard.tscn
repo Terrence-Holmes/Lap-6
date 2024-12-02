@@ -1,0 +1,359 @@
+[gd_scene load_steps=11 format=3 uid="uid://d3mqc0opa8dp3"]
+
+[ext_resource type="Script" path="res://Assets/UI/Scripts/RC_Scoreboard.gd" id="1_qmtsh"]
+[ext_resource type="Shader" path="res://Assets/UI/Shaders/rc_scolling_background.gdshader" id="2_vj8mr"]
+[ext_resource type="Texture2D" uid="uid://cwaawpcai423v" path="res://Assets/UI/Sprites/RC_BackgroundTile2.png" id="3_6c4dh"]
+[ext_resource type="FontFile" uid="uid://dmr10v1c54tq4" path="res://Assets/Fonts/Nihonium113.ttf" id="3_35phi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbebv"]
+shader = ExtResource("2_vj8mr")
+shader_parameter/motion = Vector2(25, 25)
+shader_parameter/scale = 1.0
+shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwxwt"]
+bg_color = Color(0.243137, 0.243137, 0.243137, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.756863, 0.756863, 0.756863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8tyg"]
+bg_color = Color(0.988235, 0.956863, 0, 0.627451)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.988235, 0.956863, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_014e5"]
+bg_color = Color(0.243137, 0.243137, 0.243137, 0.784314)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.243137, 0.243137, 0.243137, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qds8j"]
+bg_color = Color(0, 0, 0, 0.745098)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.505882, 0.505882, 0.505882, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Theme" id="Theme_7571v"]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_pressed_color = Color(0.505882, 0.505882, 0.505882, 1)
+Button/fonts/font = ExtResource("3_35phi")
+Button/styles/hover = SubResource("StyleBoxFlat_f8tyg")
+Button/styles/normal = SubResource("StyleBoxFlat_014e5")
+Button/styles/pressed = SubResource("StyleBoxFlat_qds8j")
+Label/fonts/font = ExtResource("3_35phi")
+
+[node name="Scoreboard" type="Control"]
+custom_minimum_size = Vector2(852, 480)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 480.0
+script = ExtResource("1_qmtsh")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_jbebv")
+custom_minimum_size = Vector2(640, 480)
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 480.0
+texture = ExtResource("3_6c4dh")
+stretch_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(0, 248)
+layout_mode = 2
+offset_left = 63.0
+offset_top = 24.0
+offset_right = 575.0
+offset_bottom = 80.0
+vertical_scroll_mode = 0
+
+[node name="StatsRoot" type="Control" parent="ScrollContainer"]
+custom_minimum_size = Vector2(704, 0)
+layout_mode = 2
+
+[node name="StatsContainer" type="VBoxContainer" parent="ScrollContainer/StatsRoot"]
+custom_minimum_size = Vector2(704, 240)
+layout_mode = 2
+offset_right = 704.0
+offset_bottom = 240.0
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="StatsKey" type="Panel" parent="ScrollContainer/StatsRoot/StatsContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vwxwt")
+
+[node name="StatsContainer" type="HBoxContainer" parent="ScrollContainer/StatsRoot/StatsContainer/StatsKey"]
+layout_mode = 2
+offset_right = 758.0
+offset_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="Padding0" type="Control" parent="ScrollContainer/StatsRoot/StatsContainer/StatsKey/StatsContainer"]
+layout_mode = 2
+
+[node name="PlaceLabel" type="Label" parent="ScrollContainer/StatsRoot/StatsContainer/StatsKey/StatsContainer"]
+custom_minimum_size = Vector2(50, 24)
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_font_sizes/font_size = 20
+text = "PLACE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separator0" type="ColorRect" parent="ScrollContainer/StatsRoot/StatsContainer/StatsKey/StatsContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+color = Color(0.756863, 0.756863, 0.756863, 1)
+
+[node name="PlayerLabel" type="Label" parent="ScrollContainer/StatsRoot/StatsContainer/StatsKey/StatsContainer"]
+custom_minimum_size = Vector2(58, 24)
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_font_sizes/font_size = 20
+text = "RACER"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 1
+
+[node name="Separator1" type="ColorRect" parent="ScrollContainer/StatsRoot/StatsContainer/StatsKey/StatsContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+color = Color(0.756863, 0.756863, 0.756863, 1)
+
+[node name="TotalTime" type="Label" parent="ScrollContainer/StatsRoot/StatsContainer/StatsKey/StatsContainer"]
+custom_minimum_size = Vector2(52, 24)
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_font_sizes/font_size = 20
+text = "TIME"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="Separator2" type="ColorRect" parent="ScrollContainer/StatsRoot/StatsContainer/StatsKey/StatsContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+color = Color(0.756863, 0.756863, 0.756863, 1)
+
+[node name="Lap1Time" type="Label" parent="ScrollContainer/StatsRoot/StatsContainer/StatsKey/StatsContainer"]
+custom_minimum_size = Vector2(52, 24)
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_font_sizes/font_size = 20
+text = "LAP 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="Separator3" type="ColorRect" parent="ScrollContainer/StatsRoot/StatsContainer/StatsKey/StatsContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+color = Color(0.756863, 0.756863, 0.756863, 1)
+
+[node name="Lap2Time" type="Label" parent="ScrollContainer/StatsRoot/StatsContainer/StatsKey/StatsContainer"]
+custom_minimum_size = Vector2(52, 24)
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_font_sizes/font_size = 20
+text = "LAP 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="Separator4" type="ColorRect" parent="ScrollContainer/StatsRoot/StatsContainer/StatsKey/StatsContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+color = Color(0.756863, 0.756863, 0.756863, 1)
+
+[node name="Lap3Time" type="Label" parent="ScrollContainer/StatsRoot/StatsContainer/StatsKey/StatsContainer"]
+custom_minimum_size = Vector2(52, 24)
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_font_sizes/font_size = 20
+text = "LAP 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="Separator5" type="ColorRect" parent="ScrollContainer/StatsRoot/StatsContainer/StatsKey/StatsContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+color = Color(0.756863, 0.756863, 0.756863, 1)
+
+[node name="Lap4Time" type="Label" parent="ScrollContainer/StatsRoot/StatsContainer/StatsKey/StatsContainer"]
+custom_minimum_size = Vector2(52, 24)
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_font_sizes/font_size = 20
+text = "LAP 4"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="Separator6" type="ColorRect" parent="ScrollContainer/StatsRoot/StatsContainer/StatsKey/StatsContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+color = Color(0.756863, 0.756863, 0.756863, 1)
+
+[node name="Lap5Time" type="Label" parent="ScrollContainer/StatsRoot/StatsContainer/StatsKey/StatsContainer"]
+custom_minimum_size = Vector2(52, 24)
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_font_sizes/font_size = 20
+text = "LAP 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="Separator7" type="ColorRect" parent="ScrollContainer/StatsRoot/StatsContainer/StatsKey/StatsContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+color = Color(0.756863, 0.756863, 0.756863, 1)
+
+[node name="Lap6Time" type="Label" parent="ScrollContainer/StatsRoot/StatsContainer/StatsKey/StatsContainer"]
+custom_minimum_size = Vector2(52, 24)
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_font_sizes/font_size = 20
+text = "LAP 6"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="HighScoreContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(640, 0)
+layout_mode = 1
+offset_top = 292.0
+offset_right = 640.0
+offset_bottom = 376.0
+
+[node name="HighScoreLabel" type="RichTextLabel" parent="HighScoreContainer"]
+custom_minimum_size = Vector2(260, 40)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("3_35phi")
+theme_override_font_sizes/normal_font_size = 42
+bbcode_enabled = true
+text = "[center][rainbow][shake]NEW HIGH SCORE!"
+
+[node name="WinningRacer" type="Label" parent="HighScoreContainer/HighScoreLabel"]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+offset_left = 76.0
+offset_top = -2.0
+offset_right = 216.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.243137, 0.243137, 0.243137, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_35phi")
+theme_override_font_sizes/font_size = 42
+text = "Racer 1"
+vertical_alignment = 1
+
+[node name="HighScoreTime" type="Label" parent="HighScoreContainer/HighScoreLabel"]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+offset_left = 456.0
+offset_top = -2.0
+offset_right = 596.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.243137, 0.243137, 0.243137, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_35phi")
+theme_override_font_sizes/font_size = 42
+text = "00:00"
+vertical_alignment = 1
+
+[node name="NameEntry" type="Control" parent="HighScoreContainer"]
+custom_minimum_size = Vector2(270, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NameEntryLabel" type="RichTextLabel" parent="HighScoreContainer/NameEntry"]
+custom_minimum_size = Vector2(270, 40)
+layout_mode = 0
+offset_left = 18.0
+offset_right = 288.0
+offset_bottom = 40.0
+theme_override_colors/font_outline_color = Color(0.243137, 0.243137, 0.243137, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("3_35phi")
+theme_override_font_sizes/normal_font_size = 42
+bbcode_enabled = true
+text = "Enter initials: _"
+scroll_active = false
+
+[node name="Instructions" type="Label" parent="HighScoreContainer/NameEntry"]
+custom_minimum_size = Vector2(180, 60)
+layout_mode = 0
+offset_left = 224.0
+offset_top = 62.0
+offset_right = 403.0
+offset_bottom = 122.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_35phi")
+theme_override_font_sizes/font_size = 20
+text = "UP/DOWN  -  Choose letter
+ J  -  Select letter
+K  -  Undo last letter"
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="."]
+custom_minimum_size = Vector2(168, 32)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -366.0
+offset_top = -68.0
+offset_right = -198.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme = SubResource("Theme_7571v")
+theme_override_font_sizes/font_size = 24
+text = "MAIN MENU"

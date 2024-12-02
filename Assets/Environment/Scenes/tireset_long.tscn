@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://3mkcpdddnp1a"]
+
+[ext_resource type="Texture2D" uid="uid://cb067hfni1irg" path="res://Assets/Environment/Sprites/RC_Tire.png" id="1_ggd1v"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7a28g"]
+radius = 8.0
+height = 64.0
+
+[node name="TiresetLong" type="StaticBody2D"]
+collision_mask = 0
+
+[node name="Sprite" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(64, 16)
+offset_left = -32.0
+offset_top = -8.0
+offset_right = 32.0
+offset_bottom = 8.0
+texture = ExtResource("1_ggd1v")
+stretch_mode = 1
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_7a28g")

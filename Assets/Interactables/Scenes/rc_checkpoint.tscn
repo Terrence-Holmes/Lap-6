@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://s0bjfphk5pps"]
+
+[ext_resource type="Script" path="res://Assets/Interactables/Scripts/RC_CheckpointEditor.gd" id="1_4i832"]
+[ext_resource type="Script" path="res://Assets/Interactables/Scripts/RC_Checkpoint.gd" id="1_7i8fh"]
+
+[node name="Checkpoint" type="Node2D"]
+script = ExtResource("1_7i8fh")
+
+[node name="EditorVisual" type="Line2D" parent="."]
+points = PackedVector2Array(-128, 0, 128, 0)
+width = 2.0
+script = ExtResource("1_4i832")
+
+[node name="SpawnLine" type="Line2D" parent="EditorVisual"]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 4.0
+default_color = Color(1, 0, 1, 1)
+
+[node name="Arrow" type="Line2D" parent="EditorVisual"]
+points = PackedVector2Array(0, -12, 0, 12)
+width = 3.0
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="ArrowHead0" type="Line2D" parent="EditorVisual/Arrow"]
+points = PackedVector2Array(0, -16, -6, -4)
+width = 3.0
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="ArrowHead1" type="Line2D" parent="EditorVisual/Arrow"]
+points = PackedVector2Array(0, -16, 6, -4)
+width = 3.0
+begin_cap_mode = 2
+end_cap_mode = 2

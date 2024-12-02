@@ -1,0 +1,155 @@
+[gd_scene load_steps=26 format=3 uid="uid://bxk4juhpv5ay6"]
+
+[ext_resource type="Script" path="res://Assets/Control/Scripts/RC_GameManager.gd" id="1_c214o"]
+[ext_resource type="Script" path="res://Assets/Audio/Scripts/RC_SoundManager.gd" id="2_67qc6"]
+[ext_resource type="PackedScene" uid="uid://bogftupwxnjq0" path="res://Assets/UI/Scenes/rc_game_ui.tscn" id="3_i8oxi"]
+[ext_resource type="AudioStream" uid="uid://bgmiaowcu87xd" path="res://Assets/Audio/SFX/RC_Drift.wav" id="3_mxvvr"]
+[ext_resource type="PackedScene" uid="uid://bonebbs3npsni" path="res://Assets/UI/Scenes/rc_countdown.tscn" id="4_3vuna"]
+[ext_resource type="AudioStream" uid="uid://c0nixnj0ls4fu" path="res://Assets/Audio/SFX/RC_Flames.wav" id="4_w4ol0"]
+[ext_resource type="PackedScene" uid="uid://d3mqc0opa8dp3" path="res://Assets/UI/Scenes/rc_scoreboard.tscn" id="5_3iiik"]
+[ext_resource type="AudioStream" uid="uid://bv5m3jmq7t8e5" path="res://Assets/Audio/SFX/RC_Boost.wav" id="5_l58ta"]
+[ext_resource type="AudioStream" uid="uid://cfcl2dpus8csy" path="res://Assets/Audio/SFX/RC_Crash.wav" id="6_ktaou"]
+[ext_resource type="PackedScene" uid="uid://gpaylnvo6sep" path="res://Assets/UI/Scenes/rc_character_select_ui.tscn" id="6_ujn3f"]
+[ext_resource type="AudioStream" uid="uid://6ihobhvn3tgy" path="res://Assets/Audio/SFX/RC_Engine.wav" id="7_kag4y"]
+[ext_resource type="PackedScene" uid="uid://dy1sq5osxdmou" path="res://Assets/UI/Scenes/rc_main_menu_ui.tscn" id="7_p70vb"]
+[ext_resource type="AudioStream" uid="uid://c2w5vrpv471sg" path="res://Assets/Audio/SFX/RC_Countdown1.wav" id="8_d3whx"]
+[ext_resource type="AudioStream" uid="uid://v7sajv2tfru5" path="res://Assets/Audio/SFX/RC_Countdown2.wav" id="9_qd8lu"]
+[ext_resource type="AudioStream" uid="uid://cckjhhv5sa2u6" path="res://Assets/Audio/SFX/RC_LapComplete.wav" id="10_2nine"]
+[ext_resource type="AudioStream" uid="uid://c4t3ocn3c6efq" path="res://Assets/Audio/SFX/RC_RaceComplete.wav" id="11_v45e5"]
+[ext_resource type="AudioStream" uid="uid://b2to1770aiir4" path="res://Assets/Audio/SFX/RC_MouseHover.wav" id="12_4awmm"]
+[ext_resource type="AudioStream" uid="uid://diotajnmsxi1a" path="res://Assets/Audio/SFX/RC_MouseClick.wav" id="13_6s86y"]
+[ext_resource type="AudioStream" uid="uid://b7woevn4cgn7s" path="res://Assets/Audio/SFX/RC_LetterChange.wav" id="14_wupht"]
+[ext_resource type="AudioStream" uid="uid://mwcvp8xergsf" path="res://Assets/Audio/SFX/RC_Startup.wav" id="15_6ip7u"]
+[ext_resource type="AudioStream" uid="uid://l13n11w60hg1" path="res://Assets/Audio/Music/Lap6_TitleScreen.wav" id="16_u1pi1"]
+[ext_resource type="AudioStream" uid="uid://drua1mlr3ee3u" path="res://Assets/Audio/SFX/RC_Pause.wav" id="16_wnx6m"]
+[ext_resource type="AudioStream" uid="uid://cyji0ko2j8pkh" path="res://Assets/Audio/Music/Lap6_Race.wav" id="17_5yul6"]
+[ext_resource type="AudioStream" uid="uid://dm577cf8cw62u" path="res://Assets/Audio/SFX/RC_Unpause.wav" id="17_c58sv"]
+[ext_resource type="PackedScene" uid="uid://dlulit1u8l53v" path="res://Assets/UI/Scenes/rc_pause_screen.tscn" id="23_cpkjb"]
+
+[node name="Arcade-Racer" type="Node2D"]
+script = ExtResource("1_c214o")
+
+[node name="SoundManager" type="Node2D" parent="."]
+script = ExtResource("2_67qc6")
+
+[node name="Drift" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("3_mxvvr")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Flames" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("4_w4ol0")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="Boost" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("5_l58ta")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="Crash" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("6_ktaou")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Engine" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("7_kag4y")
+volume_db = -30.0
+bus = &"SFX"
+
+[node name="Countdown1" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("8_d3whx")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Countdown2" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("9_qd8lu")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="LapComplete" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("10_2nine")
+volume_db = 5.0
+bus = &"SFX"
+
+[node name="RaceComplete" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("11_v45e5")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="MouseHover" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("12_4awmm")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="MouseClick" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("13_6s86y")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="LetterChange" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("14_wupht")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="Startup" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("15_6ip7u")
+volume_db = -20.0
+bus = &"SFX"
+
+[node name="Unpause" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("16_wnx6m")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="Pause" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("17_c58sv")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("16_u1pi1")
+volume_db = -10.0
+bus = &"Music"
+
+[node name="RaceMusic" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("17_5yul6")
+volume_db = -5.0
+bus = &"Music"
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(310, 240)
+
+[node name="Levels" type="Node2D" parent="."]
+position = Vector2(96, 0)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="UI" instance=ExtResource("3_i8oxi")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 214.0
+offset_bottom = 480.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Countdown" parent="UI" instance=ExtResource("4_3vuna")]
+offset_left = 213.0
+offset_right = 853.0
+
+[node name="Scoreboard" parent="UI" instance=ExtResource("5_3iiik")]
+visible = false
+offset_left = 213.0
+offset_right = 853.0
+
+[node name="MainMenu" parent="UI" instance=ExtResource("7_p70vb")]
+visible = false
+offset_right = 852.0
+
+[node name="CharacterSelect" parent="UI" instance=ExtResource("6_ujn3f")]
+visible = false
+offset_right = 852.0
+
+[node name="PauseScreen" parent="UI" instance=ExtResource("23_cpkjb")]
+visible = false

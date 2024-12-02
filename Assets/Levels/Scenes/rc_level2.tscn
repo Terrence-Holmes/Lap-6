@@ -1,0 +1,381 @@
+[gd_scene load_steps=14 format=3 uid="uid://bdshui8xn03ww"]
+
+[ext_resource type="Script" path="res://Assets/Levels/Scripts/RC_Level.gd" id="1_63gsy"]
+[ext_resource type="Texture2D" uid="uid://cq374qs471hol" path="res://Assets/Levels/Sprites/RC_Level2_Background.png" id="2_iobce"]
+[ext_resource type="Texture2D" uid="uid://ccvvpbtxtv6f2" path="res://Assets/Environment/Sprites/RC_FinishLine.png" id="3_1peho"]
+[ext_resource type="PackedScene" uid="uid://c847an1mbhea3" path="res://Assets/Environment/Scenes/pond.tscn" id="3_vdxa5"]
+[ext_resource type="PackedScene" uid="uid://dhwbbg5htsfb0" path="res://Assets/Environment/Scenes/tree.tscn" id="4_5wpqu"]
+[ext_resource type="PackedScene" uid="uid://bv8bjv4n8rq2x" path="res://Assets/Environment/Scenes/dead_tree.tscn" id="5_fgsqc"]
+[ext_resource type="Texture2D" uid="uid://dm8ko5yjw0kjg" path="res://Assets/Environment/Sprites/RC_Tree.png" id="6_3624l"]
+[ext_resource type="Texture2D" uid="uid://bmvw3dp6sipgc" path="res://Assets/Environment/Sprites/RC_DeadTree.png" id="7_cxnr7"]
+[ext_resource type="Texture2D" uid="uid://cb067hfni1irg" path="res://Assets/Environment/Sprites/RC_Tire.png" id="8_2lmaq"]
+[ext_resource type="PackedScene" uid="uid://exalda4e2ykg" path="res://Assets/Interactables/Scenes/rc_boost.tscn" id="9_xtt04"]
+[ext_resource type="PackedScene" uid="uid://s0bjfphk5pps" path="res://Assets/Interactables/Scenes/rc_checkpoint.tscn" id="10_oaq7n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7arpt"]
+size = Vector2(672, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txh8m"]
+size = Vector2(16, 480)
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_63gsy")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 480.0
+offset_bottom = 360.0
+texture = ExtResource("2_iobce")
+
+[node name="FinishLine" type="TextureRect" parent="."]
+offset_left = 8.0
+offset_top = 225.0
+offset_right = 96.0
+offset_bottom = 241.0
+texture = ExtResource("3_1peho")
+stretch_mode = 1
+
+[node name="Grass" type="Area2D" parent="."]
+visible = false
+scale = Vector2(1.34, 1.34)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShapeOuter" type="CollisionPolygon2D" parent="Grass"]
+polygon = PackedVector2Array(31.3433, 54.4776, 68.6567, 20.1493, 102.239, 13.4328, 140.299, 23.8806, 172.388, 54.4776, 192.537, 88.806, 217.164, 179.104, 237.313, 196.269, 256.716, 182.09, 283.582, 94.0298, 313.433, 52.2388, 341.045, 27.6119, 371.642, 19.403, 407.463, 23.8806, 444.776, 43.2836, 468.657, 97.0149, 470.149, 162.687, 451.493, 210.448, 417.91, 256.716, 370.896, 298.507, 319.403, 323.134, 252.985, 345.522, 189.552, 348.507, 95.5224, 345.522, 44.7761, 323.881, 26.1194, 283.582, 7.46269, 171.642, 8.95522, 122.388, 14.9254, 90.2985, 0, 90, 0, 360, 480, 360, 480, 0, 0, 0, 0, 90, 14.9254, 90.2985)
+
+[node name="CollisionShapeInner" type="CollisionPolygon2D" parent="Grass"]
+polygon = PackedVector2Array(76.8657, 84.3284, 94.7761, 73.8806, 112.687, 77.6119, 135.075, 103.731, 158.955, 194.776, 179.104, 230.597, 231.343, 257.463, 276.866, 247.761, 317.91, 200.746, 349.254, 102.985, 369.403, 82.0895, 388.06, 79.1045, 403.731, 90.2985, 409.701, 120.149, 408.209, 152.239, 396.269, 176.866, 358.209, 228.358, 238.06, 291.791, 150, 294.03, 108.209, 283.582, 86.5672, 264.179, 75.3731, 214.179, 64.9254, 100.746)
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Boundaries" type="StaticBody2D" parent="Walls"]
+
+[node name="TopBoundary" type="CollisionShape2D" parent="Walls/Boundaries"]
+position = Vector2(320, -8)
+shape = SubResource("RectangleShape2D_7arpt")
+
+[node name="BottomBoundary" type="CollisionShape2D" parent="Walls/Boundaries"]
+position = Vector2(320, 488)
+shape = SubResource("RectangleShape2D_7arpt")
+
+[node name="LeftBoundary" type="CollisionShape2D" parent="Walls/Boundaries"]
+position = Vector2(-8, 240)
+shape = SubResource("RectangleShape2D_txh8m")
+
+[node name="RightBoundary" type="CollisionShape2D" parent="Walls/Boundaries"]
+position = Vector2(648, 240)
+shape = SubResource("RectangleShape2D_txh8m")
+
+[node name="Pond" parent="Walls" instance=ExtResource("3_vdxa5")]
+position = Vector2(153, 249)
+
+[node name="Polygon" parent="Walls/Pond" index="0"]
+polygon = PackedVector2Array(-51, -54, -57, -103, -47, -124, -32, -133, -7, -131, 5, -120, 18, -89, 22, -44, 32, -14, 50, 8, 66, 43, 75, 72, 66, 97, 40, 114, 10, 116, -16, 103, -33, 79, -34, 45, -44, 23, -53, -17)
+
+[node name="Tree1" parent="Walls" instance=ExtResource("4_5wpqu")]
+position = Vector2(596, 34)
+
+[node name="Tree2" parent="Walls" instance=ExtResource("4_5wpqu")]
+position = Vector2(494, 436)
+
+[node name="Tree3" parent="Walls" instance=ExtResource("4_5wpqu")]
+position = Vector2(606, 440)
+
+[node name="Tree4" parent="Walls" instance=ExtResource("4_5wpqu")]
+position = Vector2(41, 444)
+
+[node name="DeadTree1" parent="Walls" instance=ExtResource("5_fgsqc")]
+position = Vector2(566, 370)
+rotation = -1.22173
+
+[node name="DeadTree2" parent="Walls" instance=ExtResource("5_fgsqc")]
+position = Vector2(449, 442)
+
+[node name="DeadTree3" parent="Walls" instance=ExtResource("5_fgsqc")]
+position = Vector2(551, 474)
+rotation = 2.87979
+
+[node name="DeadTree4" parent="Walls" instance=ExtResource("5_fgsqc")]
+position = Vector2(638, 282)
+rotation = 4.01426
+
+[node name="DeadTree5" parent="Walls" instance=ExtResource("5_fgsqc")]
+position = Vector2(38, 32)
+rotation = -0.959931
+
+[node name="TreeBundle1" type="StaticBody2D" parent="Walls"]
+
+[node name="Tree1" type="Sprite2D" parent="Walls/TreeBundle1"]
+position = Vector2(238, 342)
+texture = ExtResource("6_3624l")
+
+[node name="Tree2" type="Sprite2D" parent="Walls/TreeBundle1"]
+position = Vector2(189, 369)
+texture = ExtResource("6_3624l")
+
+[node name="Tree3" type="Sprite2D" parent="Walls/TreeBundle1"]
+position = Vector2(220, 368)
+texture = ExtResource("6_3624l")
+
+[node name="Tree4" type="Sprite2D" parent="Walls/TreeBundle1"]
+position = Vector2(264, 358)
+texture = ExtResource("6_3624l")
+
+[node name="Tree5" type="Sprite2D" parent="Walls/TreeBundle1"]
+position = Vector2(289, 377)
+texture = ExtResource("6_3624l")
+
+[node name="Tree6" type="Sprite2D" parent="Walls/TreeBundle1"]
+position = Vector2(317, 361)
+texture = ExtResource("6_3624l")
+
+[node name="Tree7" type="Sprite2D" parent="Walls/TreeBundle1"]
+position = Vector2(391, 334)
+texture = ExtResource("6_3624l")
+
+[node name="Tree8" type="Sprite2D" parent="Walls/TreeBundle1"]
+position = Vector2(423, 331)
+texture = ExtResource("6_3624l")
+
+[node name="Tree9" type="Sprite2D" parent="Walls/TreeBundle1"]
+position = Vector2(449, 309)
+texture = ExtResource("6_3624l")
+
+[node name="Tree10" type="Sprite2D" parent="Walls/TreeBundle1"]
+position = Vector2(439, 275)
+texture = ExtResource("6_3624l")
+
+[node name="Tree11" type="Sprite2D" parent="Walls/TreeBundle1"]
+position = Vector2(470, 284)
+texture = ExtResource("6_3624l")
+
+[node name="Tree12" type="Sprite2D" parent="Walls/TreeBundle1"]
+position = Vector2(485, 187)
+texture = ExtResource("6_3624l")
+
+[node name="Tree13" type="Sprite2D" parent="Walls/TreeBundle1"]
+position = Vector2(519, 194)
+texture = ExtResource("6_3624l")
+
+[node name="Tree14" type="Sprite2D" parent="Walls/TreeBundle1"]
+position = Vector2(514, 159)
+texture = ExtResource("6_3624l")
+
+[node name="DeadTree1" type="Sprite2D" parent="Walls/TreeBundle1"]
+position = Vector2(248, 383)
+rotation = 0.913679
+texture = ExtResource("7_cxnr7")
+
+[node name="TiresetTriangle" type="Node2D" parent="Walls/TreeBundle1"]
+position = Vector2(358, 358)
+rotation = -0.392152
+
+[node name="Sprite1" type="TextureRect" parent="Walls/TreeBundle1/TiresetTriangle"]
+custom_minimum_size = Vector2(64, 16)
+offset_left = -32.0
+offset_top = 6.0
+offset_right = 32.0
+offset_bottom = 22.0
+texture = ExtResource("8_2lmaq")
+stretch_mode = 1
+
+[node name="Sprite2" type="TextureRect" parent="Walls/TreeBundle1/TiresetTriangle"]
+custom_minimum_size = Vector2(48, 16)
+offset_left = -24.0
+offset_top = -8.0
+offset_right = 24.0
+offset_bottom = 8.0
+texture = ExtResource("8_2lmaq")
+stretch_mode = 1
+
+[node name="Sprite3" type="TextureRect" parent="Walls/TreeBundle1/TiresetTriangle"]
+custom_minimum_size = Vector2(16, 16)
+offset_left = -16.0
+offset_top = -22.0
+offset_right = 16.0
+offset_bottom = -6.0
+texture = ExtResource("8_2lmaq")
+stretch_mode = 1
+
+[node name="TiresetLong1" type="TextureRect" parent="Walls/TreeBundle1"]
+custom_minimum_size = Vector2(64, 16)
+offset_left = 479.0
+offset_top = 268.0
+offset_right = 543.0
+offset_bottom = 284.0
+rotation = -1.11776
+texture = ExtResource("8_2lmaq")
+stretch_mode = 1
+
+[node name="TiresetLong2" type="TextureRect" parent="Walls/TreeBundle1"]
+custom_minimum_size = Vector2(64, 16)
+offset_left = 440.0
+offset_top = 254.0
+offset_right = 504.0
+offset_bottom = 270.0
+rotation = -1.19944
+texture = ExtResource("8_2lmaq")
+stretch_mode = 1
+
+[node name="CollisionShape" type="CollisionPolygon2D" parent="Walls/TreeBundle1"]
+polygon = PackedVector2Array(163, 365, 228, 321, 277, 350, 306, 352, 363, 334, 388, 319, 412, 316, 430, 300, 424, 271, 442, 252, 474, 174, 509, 145, 522, 146, 529, 156, 534, 189, 491, 274, 474, 302, 428, 346, 403, 349, 394, 365, 337, 388, 319, 380, 288, 393, 271, 383, 217, 383, 185, 384)
+
+[node name="TreeBundle2" type="StaticBody2D" parent="Walls"]
+
+[node name="Tree1" type="Sprite2D" parent="Walls/TreeBundle2"]
+position = Vector2(309, 221)
+texture = ExtResource("6_3624l")
+
+[node name="Tree2" type="Sprite2D" parent="Walls/TreeBundle2"]
+position = Vector2(340, 194)
+texture = ExtResource("6_3624l")
+
+[node name="Tree3" type="Sprite2D" parent="Walls/TreeBundle2"]
+position = Vector2(300, 186)
+texture = ExtResource("6_3624l")
+
+[node name="Tree4" type="Sprite2D" parent="Walls/TreeBundle2"]
+position = Vector2(287, 121)
+texture = ExtResource("6_3624l")
+
+[node name="Tree5" type="Sprite2D" parent="Walls/TreeBundle2"]
+position = Vector2(319, 132)
+texture = ExtResource("6_3624l")
+
+[node name="Tree6" type="Sprite2D" parent="Walls/TreeBundle2"]
+position = Vector2(351, 116)
+texture = ExtResource("6_3624l")
+
+[node name="Tree7" type="Sprite2D" parent="Walls/TreeBundle2"]
+position = Vector2(375, 84)
+texture = ExtResource("6_3624l")
+
+[node name="Tree8" type="Sprite2D" parent="Walls/TreeBundle2"]
+position = Vector2(320, 96)
+texture = ExtResource("6_3624l")
+
+[node name="Tree9" type="Sprite2D" parent="Walls/TreeBundle2"]
+position = Vector2(274, 89)
+texture = ExtResource("6_3624l")
+
+[node name="Tree10" type="Sprite2D" parent="Walls/TreeBundle2"]
+position = Vector2(257, 57)
+texture = ExtResource("6_3624l")
+
+[node name="Tree11" type="Sprite2D" parent="Walls/TreeBundle2"]
+position = Vector2(347, 60)
+texture = ExtResource("6_3624l")
+
+[node name="Tree12" type="Sprite2D" parent="Walls/TreeBundle2"]
+position = Vector2(376, 44)
+texture = ExtResource("6_3624l")
+
+[node name="Tree13" type="Sprite2D" parent="Walls/TreeBundle2"]
+position = Vector2(296, 38)
+texture = ExtResource("6_3624l")
+
+[node name="Tree14" type="Sprite2D" parent="Walls/TreeBundle2"]
+position = Vector2(336, 17)
+texture = ExtResource("6_3624l")
+
+[node name="Tree15" type="Sprite2D" parent="Walls/TreeBundle2"]
+position = Vector2(401, 22)
+texture = ExtResource("6_3624l")
+
+[node name="Tree16" type="Sprite2D" parent="Walls/TreeBundle2"]
+position = Vector2(425, -2)
+texture = ExtResource("6_3624l")
+
+[node name="TiresetLong2" type="TextureRect" parent="Walls/TreeBundle2"]
+custom_minimum_size = Vector2(64, 16)
+offset_left = 237.0
+offset_top = 51.0
+offset_right = 301.0
+offset_bottom = 67.0
+rotation = -2.34223
+texture = ExtResource("8_2lmaq")
+stretch_mode = 1
+
+[node name="DeadTree1" type="Sprite2D" parent="Walls/TreeBundle2"]
+position = Vector2(318, 62)
+rotation = 0.913679
+texture = ExtResource("7_cxnr7")
+
+[node name="DeadTree2" type="Sprite2D" parent="Walls/TreeBundle2"]
+position = Vector2(229, 13)
+rotation = 2.57087
+texture = ExtResource("7_cxnr7")
+
+[node name="DeadTree3" type="Sprite2D" parent="Walls/TreeBundle2"]
+position = Vector2(268, 26)
+rotation = -1.70519
+texture = ExtResource("7_cxnr7")
+
+[node name="DeadTree4" type="Sprite2D" parent="Walls/TreeBundle2"]
+position = Vector2(369, -2)
+rotation = -3.53778
+texture = ExtResource("7_cxnr7")
+
+[node name="DeadTree5" type="Sprite2D" parent="Walls/TreeBundle2"]
+position = Vector2(343, 225)
+rotation = -0.570723
+texture = ExtResource("7_cxnr7")
+
+[node name="CollisionShape1" type="CollisionPolygon2D" parent="Walls/TreeBundle2"]
+polygon = PackedVector2Array(189, -1, 243, 57, 263, 94, 278, 133, 322, 146, 339, 132, 358, 130, 389, 91, 390, 47, 441, 0)
+
+[node name="CollisionShape2" type="CollisionPolygon2D" parent="Walls/TreeBundle2"]
+polygon = PackedVector2Array(284, 178, 298, 232, 312, 237, 327, 230, 344, 231, 349, 206, 356, 189, 345, 178, 325, 180, 300, 172)
+
+[node name="Boosts" type="Node2D" parent="."]
+
+[node name="Boost0" parent="Boosts" instance=ExtResource("9_xtt04")]
+position = Vector2(574, 245)
+rotation = 2.09483
+
+[node name="Boost1" parent="Boosts" instance=ExtResource("9_xtt04")]
+position = Vector2(74, 341)
+rotation = 10.8026
+
+[node name="VFX" type="Node2D" parent="Boosts/Boost1"]
+position = Vector2(-19.4779, 556.264)
+rotation = -2.09439
+
+[node name="Checkpoints" type="Node2D" parent="."]
+
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource("10_oaq7n")]
+position = Vector2(224, 147)
+rotation = 2.86128
+length = 120.0
+
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("10_oaq7n")]
+position = Vector2(423, 144)
+rotation = 0.569998
+length = 128.0
+
+[node name="Checkpoint3" parent="Checkpoints" instance=ExtResource("10_oaq7n")]
+position = Vector2(587, 190)
+rotation = 3.14159
+length = 112.0
+
+[node name="Checkpoint4" parent="Checkpoints" instance=ExtResource("10_oaq7n")]
+position = Vector2(459, 414)
+rotation = 4.28862
+length = 152.0
+
+[node name="Checkpoint5" parent="Checkpoints" instance=ExtResource("10_oaq7n")]
+position = Vector2(185, 430)
+rotation = 4.71239
+length = 104.0
+
+[node name="Checkpoint6" parent="Checkpoints" instance=ExtResource("10_oaq7n")]
+position = Vector2(50, 233)
+length = 112.0
+spawnLength = 42.0
+spawnOffset = 0.2
+
+[node name="VFX" type="Node2D" parent="."]
+
+[node name="Racecars" type="Node2D" parent="."]
+
+[editable path="Walls/Pond"]

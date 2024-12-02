@@ -1,0 +1,221 @@
+[gd_scene load_steps=15 format=3 uid="uid://bdpcyyopyudyo"]
+
+[ext_resource type="Script" path="res://Assets/Levels/Scripts/RC_Level.gd" id="1_f3kaw"]
+[ext_resource type="Texture2D" uid="uid://dplo7je04xrqh" path="res://Assets/Levels/Sprites/RC_Level1_Background.png" id="2_10jw2"]
+[ext_resource type="PackedScene" uid="uid://exalda4e2ykg" path="res://Assets/Interactables/Scenes/rc_boost.tscn" id="2_llxsl"]
+[ext_resource type="PackedScene" uid="uid://s0bjfphk5pps" path="res://Assets/Interactables/Scenes/rc_checkpoint.tscn" id="3_bimt7"]
+[ext_resource type="Texture2D" uid="uid://ccvvpbtxtv6f2" path="res://Assets/Environment/Sprites/RC_FinishLine.png" id="3_bvbup"]
+[ext_resource type="PackedScene" uid="uid://c847an1mbhea3" path="res://Assets/Environment/Scenes/pond.tscn" id="3_thivx"]
+[ext_resource type="PackedScene" uid="uid://3mkcpdddnp1a" path="res://Assets/Environment/Scenes/tireset_long.tscn" id="4_6lkvr"]
+[ext_resource type="PackedScene" uid="uid://qs847oi04b3b" path="res://Assets/Environment/Scenes/tireset_triangle.tscn" id="4_37o1h"]
+[ext_resource type="Texture2D" uid="uid://dm8ko5yjw0kjg" path="res://Assets/Environment/Sprites/RC_Tree.png" id="4_wysft"]
+[ext_resource type="PackedScene" uid="uid://dhwbbg5htsfb0" path="res://Assets/Environment/Scenes/tree.tscn" id="6_en4v4"]
+[ext_resource type="PackedScene" uid="uid://bv8bjv4n8rq2x" path="res://Assets/Environment/Scenes/dead_tree.tscn" id="7_c7047"]
+[ext_resource type="Texture2D" uid="uid://bmvw3dp6sipgc" path="res://Assets/Environment/Sprites/RC_DeadTree.png" id="7_pmyoj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7arpt"]
+size = Vector2(672, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txh8m"]
+size = Vector2(16, 480)
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_f3kaw")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 480.0
+offset_bottom = 360.0
+texture = ExtResource("2_10jw2")
+
+[node name="FinishLine" type="TextureRect" parent="."]
+offset_left = 68.0
+offset_top = 240.0
+offset_right = 188.0
+offset_bottom = 256.0
+texture = ExtResource("3_bvbup")
+stretch_mode = 1
+
+[node name="Grass" type="Area2D" parent="."]
+visible = false
+scale = Vector2(1.34, 1.34)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShapeOuter" type="CollisionPolygon2D" parent="Grass"]
+polygon = PackedVector2Array(61.194, 24.6269, 97.0149, 8.95522, 140.299, 8.20895, 159.701, 11.9403, 176.866, 20.8955, 226.866, 69.403, 253.731, 79.1045, 281.343, 79.8507, 324.627, 60.4478, 344.03, 54.4776, 377.612, 51.4925, 393.284, 56.7164, 421.642, 75.3731, 447.015, 108.955, 457.463, 144.03, 457.463, 161.194, 447.761, 187.313, 436.567, 206.716, 424.627, 252.239, 409.701, 279.104, 390.298, 297.015, 362.687, 329.851, 338.06, 344.03, 314.925, 350.746, 282.836, 350.746, 253.731, 340.298, 232.836, 322.388, 218.657, 308.955, 206.716, 305.224, 185.821, 308.955, 167.164, 317.164, 141.045, 320.149, 114.925, 322.388, 72.3881, 319.403, 58.209, 312.687, 47.0149, 302.985, 37, 278, 38.806, 234.328, 48.5075, 193.284, 67.9104, 166.418, 67.9104, 157.463, 62.6866, 145.522, 34.3284, 95.5224, 35.0746, 55.9701, 0, 90, 0, 360, 480, 360, 480, 0, 0, 0, 0, 90, 35.0746, 55.9701)
+
+[node name="CollisionShapeInner" type="CollisionPolygon2D" parent="Grass"]
+polygon = PackedVector2Array(123.881, 107.463, 132.836, 94.0298, 153.731, 93.2836, 188.806, 129.851, 220.896, 135.821, 258.955, 128.358, 285.821, 128.358, 314.179, 138.806, 334.328, 138.806, 358.209, 126.119, 370.149, 130.597, 379.851, 141.791, 376.119, 155.224, 359.701, 175.373, 335.075, 199.254, 320.149, 222.388, 317.91, 264.925, 308.955, 273.881, 292.537, 274.627, 264.179, 247.015, 236.567, 233.582, 210.448, 228.358, 182.09, 231.343, 158.209, 238.06, 123.881, 250, 111.194, 247.761, 121.642, 217.91, 136.567, 201.493, 142.537, 167.164, 137.313, 142.537)
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Boundaries" type="StaticBody2D" parent="Walls"]
+
+[node name="TopBoundary" type="CollisionShape2D" parent="Walls/Boundaries"]
+position = Vector2(320, -8)
+shape = SubResource("RectangleShape2D_7arpt")
+
+[node name="BottomBoundary" type="CollisionShape2D" parent="Walls/Boundaries"]
+position = Vector2(320, 488)
+shape = SubResource("RectangleShape2D_7arpt")
+
+[node name="LeftBoundary" type="CollisionShape2D" parent="Walls/Boundaries"]
+position = Vector2(-8, 240)
+shape = SubResource("RectangleShape2D_txh8m")
+
+[node name="RightBoundary" type="CollisionShape2D" parent="Walls/Boundaries"]
+position = Vector2(648, 240)
+shape = SubResource("RectangleShape2D_txh8m")
+
+[node name="Pond" parent="Walls" instance=ExtResource("3_thivx")]
+
+[node name="Polygon" parent="Walls/Pond" index="0"]
+polygon = PackedVector2Array(-139, 39, -122, 19, -114, -6, -118, -24, -131, -46, -136, -64, -133, -81, -120, -87, -108, -82, -99, -68, -85, -55, -59, -49, -30, -54, -5, -51, 17, -51, 31, -56, 44, -56, 56, -49, 75, -45, 92, -48, 109, -43, 117, -33, 120, -15, 109, 2, 109, 20, 101, 31, 83, 43, 77, 63, 65, 71, 47, 69, 25, 55, 5, 51, -10, 40, -45, 36, -78, 43, -103, 55, -131, 59, -141, 54)
+
+[node name="TiresetLong1" parent="Walls" instance=ExtResource("4_6lkvr")]
+position = Vector2(274, 48)
+rotation = 0.785398
+
+[node name="TiresetLong2" parent="Walls" instance=ExtResource("4_6lkvr")]
+position = Vector2(504, 312)
+rotation = 8.37758
+
+[node name="TiresetTriangle" parent="Walls" instance=ExtResource("4_37o1h")]
+position = Vector2(395, 70)
+rotation = -0.415802
+
+[node name="Tree1" type="StaticBody2D" parent="Walls"]
+position = Vector2(192, 148)
+
+[node name="Sprite" type="Sprite2D" parent="Walls/Tree1"]
+texture = ExtResource("4_wysft")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/Tree1"]
+polygon = PackedVector2Array(2, 38, 29, 18, 13, -10, 1, -15, -8, -13, -14, -3, -13, 7)
+
+[node name="Tree2" parent="Walls" instance=ExtResource("6_en4v4")]
+position = Vector2(155, 419)
+
+[node name="Tree3" parent="Walls" instance=ExtResource("6_en4v4")]
+position = Vector2(31, 381)
+
+[node name="Tree4" parent="Walls" instance=ExtResource("6_en4v4")]
+position = Vector2(53, 193)
+
+[node name="Tree5" parent="Walls" instance=ExtResource("6_en4v4")]
+position = Vector2(0, 143)
+
+[node name="Tree6" parent="Walls" instance=ExtResource("6_en4v4")]
+position = Vector2(588, 373)
+
+[node name="Tree7" parent="Walls" instance=ExtResource("6_en4v4")]
+position = Vector2(628, 474)
+
+[node name="Tree8" parent="Walls" instance=ExtResource("6_en4v4")]
+position = Vector2(586, 432)
+
+[node name="Tree9" parent="Walls" instance=ExtResource("6_en4v4")]
+position = Vector2(495, 443)
+
+[node name="Tree10" parent="Walls" instance=ExtResource("6_en4v4")]
+position = Vector2(503, 42)
+
+[node name="Tree11" parent="Walls" instance=ExtResource("6_en4v4")]
+position = Vector2(594, 33)
+
+[node name="Tree12" parent="Walls" instance=ExtResource("6_en4v4")]
+position = Vector2(368, 4)
+
+[node name="DeadTree1" type="StaticBody2D" parent="Walls"]
+
+[node name="Sprite" type="Sprite2D" parent="Walls/DeadTree1"]
+position = Vector2(318, 64)
+rotation = 2.53073
+texture = ExtResource("7_pmyoj")
+
+[node name="CollisionShape" type="CollisionPolygon2D" parent="Walls/DeadTree1"]
+polygon = PackedVector2Array(279, 64, 290, 53, 300, 63, 321, 58, 322, 65, 292, 73)
+
+[node name="DeadTree2" parent="Walls" instance=ExtResource("7_c7047")]
+position = Vector2(421, 354)
+
+[node name="DeadTree3" parent="Walls" instance=ExtResource("7_c7047")]
+position = Vector2(39, 95)
+rotation = -0.861379
+
+[node name="DeadTree4" parent="Walls" instance=ExtResource("7_c7047")]
+position = Vector2(563, 74)
+rotation = 1.29546
+
+[node name="DeadTree5" parent="Walls" instance=ExtResource("7_c7047")]
+position = Vector2(587, 293)
+rotation = -1.48136
+
+[node name="DeadTree6" parent="Walls" instance=ExtResource("7_c7047")]
+position = Vector2(82, 439)
+rotation = -0.55887
+
+[node name="DeadTree7" parent="Walls" instance=ExtResource("7_c7047")]
+position = Vector2(392, 194)
+rotation = -1.97981
+
+[node name="Boosts" type="Node2D" parent="."]
+
+[node name="Boost0" parent="Boosts" instance=ExtResource("2_llxsl")]
+position = Vector2(285, 335)
+rotation = 3.14159
+
+[node name="Boost1" parent="Boosts" instance=ExtResource("2_llxsl")]
+position = Vector2(538, 332)
+rotation = 8.37758
+
+[node name="VFX" type="Node2D" parent="Boosts/Boost1"]
+position = Vector2(-19.4779, 556.264)
+rotation = -2.09439
+
+[node name="Checkpoints" type="Node2D" parent="."]
+
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource("3_bimt7")]
+position = Vector2(193, 67)
+rotation = 1.5708
+length = 144.0
+
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("3_bimt7")]
+position = Vector2(419, 102)
+rotation = 1.5708
+length = 208.0
+
+[node name="Checkpoint3" parent="Checkpoints" instance=ExtResource("3_bimt7")]
+position = Vector2(540, 268)
+rotation = 3.14159
+length = 208.0
+
+[node name="Checkpoint4" parent="Checkpoints" instance=ExtResource("3_bimt7")]
+position = Vector2(394, 402)
+rotation = 4.71239
+length = 176.0
+
+[node name="Checkpoint5" parent="Checkpoints" instance=ExtResource("3_bimt7")]
+position = Vector2(199, 395)
+rotation = 4.71239
+length = 192.0
+
+[node name="Checkpoint6" parent="Checkpoints" instance=ExtResource("3_bimt7")]
+position = Vector2(117, 248)
+length = 232.0
+spawnLength = 56.0
+spawnOffset = 0.22
+
+[node name="VFX" type="Node2D" parent="."]
+
+[node name="Racecars" type="Node2D" parent="."]
+
+[editable path="Walls/Pond"]
+[editable path="Walls/TiresetLong1"]
+[editable path="Walls/TiresetTriangle"]
+[editable path="Walls/DeadTree2"]
+[editable path="Walls/DeadTree3"]
+[editable path="Walls/DeadTree4"]
+[editable path="Walls/DeadTree5"]
+[editable path="Walls/DeadTree6"]
+[editable path="Walls/DeadTree7"]

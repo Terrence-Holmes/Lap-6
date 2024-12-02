@@ -1,0 +1,609 @@
+[gd_scene load_steps=18 format=3 uid="uid://gpaylnvo6sep"]
+
+[ext_resource type="Script" path="res://Assets/UI/Scripts/RC_CharacterSelectUI.gd" id="1_htor4"]
+[ext_resource type="FontFile" uid="uid://dmr10v1c54tq4" path="res://Assets/Fonts/Nihonium113.ttf" id="2_3ovjq"]
+[ext_resource type="Texture2D" uid="uid://b4heogp451pnl" path="res://Assets/Driver/Sprites/rc_racecar_selection.png" id="2_ds4go"]
+[ext_resource type="Shader" path="res://Assets/UI/Shaders/rc_scolling_background.gdshader" id="2_mhbxr"]
+[ext_resource type="Theme" uid="uid://70k2tfyrxf4r" path="res://Assets/UI/Themes/rc_theme_font.tres" id="2_qnsu7"]
+[ext_resource type="Texture2D" uid="uid://blskyiyaaaq6p" path="res://Assets/Driver/Sprites/rc_racecar_selection_color.png" id="3_7g2rv"]
+[ext_resource type="Texture2D" uid="uid://cqijhy4p44rv7" path="res://Assets/UI/Sprites/RC_BackgroundTile.png" id="3_fbvfw"]
+[ext_resource type="Texture2D" uid="uid://dplo7je04xrqh" path="res://Assets/Levels/Sprites/RC_Level1_Background.png" id="4_fnv35"]
+[ext_resource type="Theme" uid="uid://c74y862xrye3v" path="res://Assets/UI/Themes/rc_theme_mainMenu.tres" id="6_yhtk3"]
+[ext_resource type="Texture2D" uid="uid://c3tq7e16fkt4h" path="res://Assets/UI/Sprites/RC_ChangeIcon.png" id="8_2vxo6"]
+[ext_resource type="Texture2D" uid="uid://d13qmbynm67hs" path="res://Assets/UI/Sprites/RC_PlusIcon.png" id="9_ug10i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dyj03"]
+shader = ExtResource("2_mhbxr")
+shader_parameter/motion = Vector2(25, 25)
+shader_parameter/scale = 1.0
+shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oe3qn"]
+bg_color = Color(0.988235, 0.956863, 0, 0.392157)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.988235, 0.956863, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dn31i"]
+bg_color = Color(0.243137, 0.243137, 0.243137, 0.745098)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.243137, 0.243137, 0.243137, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgf5j"]
+bg_color = Color(0, 0, 0, 0.745098)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.505882, 0.505882, 0.505882, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Theme" id="Theme_7571v"]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_pressed_color = Color(0.505882, 0.505882, 0.505882, 1)
+Button/fonts/font = ExtResource("2_3ovjq")
+Button/styles/hover = SubResource("StyleBoxFlat_oe3qn")
+Button/styles/normal = SubResource("StyleBoxFlat_dn31i")
+Button/styles/pressed = SubResource("StyleBoxFlat_rgf5j")
+Label/fonts/font = ExtResource("2_3ovjq")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_us2nv"]
+bg_color = Color(0.243137, 0.243137, 0.243137, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.756863, 0.756863, 0.756863, 1)
+
+[node name="CharacterSelect" type="Control"]
+custom_minimum_size = Vector2(852, 480)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 480.0
+script = ExtResource("1_htor4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_dyj03")
+custom_minimum_size = Vector2(640, 480)
+layout_mode = 0
+offset_left = 214.0
+offset_right = 854.0
+offset_bottom = 480.0
+texture = ExtResource("3_fbvfw")
+stretch_mode = 1
+
+[node name="CharacterContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(640, 0)
+layout_mode = 0
+offset_left = 214.0
+offset_top = 32.0
+offset_right = 854.0
+offset_bottom = 226.0
+theme_override_constants/separation = 42
+alignment = 1
+
+[node name="Character1" type="Control" parent="CharacterContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+
+[node name="Container" type="VBoxContainer" parent="CharacterContainer/Character1"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+offset_right = 86.0
+offset_bottom = 194.0
+size_flags_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="RacerName" type="Label" parent="CharacterContainer/Character1/Container"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_colors/font_outline_color = Color(0.243137, 0.243137, 0.243137, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "Racer 1"
+horizontal_alignment = 1
+
+[node name="RacerPreviewContainer" type="Control" parent="CharacterContainer/Character1/Container"]
+custom_minimum_size = Vector2(86, 86)
+layout_mode = 2
+
+[node name="RacerPreview" type="TextureRect" parent="CharacterContainer/Character1/Container/RacerPreviewContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 79.0
+offset_bottom = 79.0
+pivot_offset = Vector2(36, 36)
+texture = ExtResource("2_ds4go")
+
+[node name="RacerPreviewColor" type="TextureRect" parent="CharacterContainer/Character1/Container/RacerPreviewContainer/RacerPreview"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+offset_right = 72.0
+offset_bottom = 72.0
+pivot_offset = Vector2(36, 36)
+texture = ExtResource("3_7g2rv")
+
+[node name="ControllerContainer" type="HBoxContainer" parent="CharacterContainer/Character1/Container"]
+layout_mode = 2
+alignment = 1
+
+[node name="ControllerLabel" type="Label" parent="CharacterContainer/Character1/Container/ControllerContainer"]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_colors/font_outline_color = Color(0.243137, 0.243137, 0.243137, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "PLAYER"
+horizontal_alignment = 1
+
+[node name="ColorContainer" type="HBoxContainer" parent="CharacterContainer/Character1/Container"]
+layout_mode = 2
+alignment = 1
+
+[node name="ColorPreview" type="ColorRect" parent="CharacterContainer/Character1/Container/ColorContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+
+[node name="ColorButton" type="Button" parent="CharacterContainer/Character1/Container/ColorContainer"]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_qnsu7")
+icon = ExtResource("8_2vxo6")
+expand_icon = true
+
+[node name="Character2" type="Control" parent="CharacterContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+
+[node name="Container" type="VBoxContainer" parent="CharacterContainer/Character2"]
+visible = false
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 0
+offset_right = 86.0
+offset_bottom = 212.0
+size_flags_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="RacerName" type="Label" parent="CharacterContainer/Character2/Container"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_colors/font_outline_color = Color(0.243137, 0.243137, 0.243137, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "Racer 2"
+horizontal_alignment = 1
+
+[node name="RacerPreviewContainer" type="Control" parent="CharacterContainer/Character2/Container"]
+custom_minimum_size = Vector2(86, 86)
+layout_mode = 2
+
+[node name="RacerPreview" type="TextureRect" parent="CharacterContainer/Character2/Container/RacerPreviewContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 79.0
+offset_bottom = 79.0
+pivot_offset = Vector2(36, 36)
+texture = ExtResource("2_ds4go")
+
+[node name="RacerPreviewColor" type="TextureRect" parent="CharacterContainer/Character2/Container/RacerPreviewContainer/RacerPreview"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+offset_right = 72.0
+offset_bottom = 72.0
+pivot_offset = Vector2(36, 36)
+texture = ExtResource("3_7g2rv")
+
+[node name="ControllerContainer" type="HBoxContainer" parent="CharacterContainer/Character2/Container"]
+layout_mode = 2
+alignment = 1
+
+[node name="ControllerLabel" type="Label" parent="CharacterContainer/Character2/Container/ControllerContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_colors/font_outline_color = Color(0.243137, 0.243137, 0.243137, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "CPU"
+horizontal_alignment = 1
+
+[node name="ControllerButton" type="Button" parent="CharacterContainer/Character2/Container/ControllerContainer"]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_qnsu7")
+icon = ExtResource("8_2vxo6")
+expand_icon = true
+
+[node name="DifficultyContainer" type="HBoxContainer" parent="CharacterContainer/Character2/Container"]
+layout_mode = 2
+alignment = 1
+
+[node name="DifficultyLabel" type="Label" parent="CharacterContainer/Character2/Container/DifficultyContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_colors/font_outline_color = Color(0.243137, 0.243137, 0.243137, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "MEDIUM"
+horizontal_alignment = 1
+
+[node name="DifficultyButton" type="Button" parent="CharacterContainer/Character2/Container/DifficultyContainer"]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_qnsu7")
+icon = ExtResource("8_2vxo6")
+expand_icon = true
+
+[node name="ColorContainer" type="HBoxContainer" parent="CharacterContainer/Character2/Container"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="ColorPreview" type="ColorRect" parent="CharacterContainer/Character2/Container/ColorContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+
+[node name="ColorButton" type="Button" parent="CharacterContainer/Character2/Container/ColorContainer"]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_qnsu7")
+icon = ExtResource("8_2vxo6")
+expand_icon = true
+
+[node name="RemoveButton" type="Button" parent="CharacterContainer/Character2/Container"]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_qnsu7")
+theme_override_font_sizes/font_size = 20
+text = "REMOVE"
+
+[node name="AddCharacter" type="Button" parent="CharacterContainer/Character2"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("2_qnsu7")
+icon = ExtResource("9_ug10i")
+expand_icon = true
+
+[node name="Character3" type="Control" parent="CharacterContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+
+[node name="Container" type="VBoxContainer" parent="CharacterContainer/Character3"]
+visible = false
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 0
+offset_right = 86.0
+offset_bottom = 212.0
+size_flags_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="RacerName" type="Label" parent="CharacterContainer/Character3/Container"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_colors/font_outline_color = Color(0.243137, 0.243137, 0.243137, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "Racer 3"
+horizontal_alignment = 1
+
+[node name="RacerPreviewContainer" type="Control" parent="CharacterContainer/Character3/Container"]
+custom_minimum_size = Vector2(86, 86)
+layout_mode = 2
+
+[node name="RacerPreview" type="TextureRect" parent="CharacterContainer/Character3/Container/RacerPreviewContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 79.0
+offset_bottom = 79.0
+pivot_offset = Vector2(36, 36)
+texture = ExtResource("2_ds4go")
+
+[node name="RacerPreviewColor" type="TextureRect" parent="CharacterContainer/Character3/Container/RacerPreviewContainer/RacerPreview"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+offset_right = 72.0
+offset_bottom = 72.0
+pivot_offset = Vector2(36, 36)
+texture = ExtResource("3_7g2rv")
+
+[node name="ControllerContainer" type="HBoxContainer" parent="CharacterContainer/Character3/Container"]
+layout_mode = 2
+alignment = 1
+
+[node name="ControllerLabel" type="Label" parent="CharacterContainer/Character3/Container/ControllerContainer"]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_colors/font_outline_color = Color(0.243137, 0.243137, 0.243137, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "CPU"
+horizontal_alignment = 1
+
+[node name="DifficultyContainer" type="HBoxContainer" parent="CharacterContainer/Character3/Container"]
+layout_mode = 2
+alignment = 1
+
+[node name="DifficultyLabel" type="Label" parent="CharacterContainer/Character3/Container/DifficultyContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_colors/font_outline_color = Color(0.243137, 0.243137, 0.243137, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "MEDIUM"
+horizontal_alignment = 1
+
+[node name="DifficultyButton" type="Button" parent="CharacterContainer/Character3/Container/DifficultyContainer"]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_qnsu7")
+icon = ExtResource("8_2vxo6")
+expand_icon = true
+
+[node name="RemoveButton" type="Button" parent="CharacterContainer/Character3/Container"]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_qnsu7")
+theme_override_font_sizes/font_size = 20
+text = "REMOVE"
+
+[node name="AddCharacter" type="Button" parent="CharacterContainer/Character3"]
+visible = false
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("2_qnsu7")
+theme_override_font_sizes/font_size = 24
+icon = ExtResource("9_ug10i")
+expand_icon = true
+
+[node name="Character4" type="Control" parent="CharacterContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+
+[node name="Container" type="VBoxContainer" parent="CharacterContainer/Character4"]
+visible = false
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 0
+offset_right = 86.0
+offset_bottom = 212.0
+size_flags_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="RacerName" type="Label" parent="CharacterContainer/Character4/Container"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_colors/font_outline_color = Color(0.243137, 0.243137, 0.243137, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "Racer 4"
+horizontal_alignment = 1
+
+[node name="RacerPreviewContainer" type="Control" parent="CharacterContainer/Character4/Container"]
+custom_minimum_size = Vector2(86, 86)
+layout_mode = 2
+
+[node name="RacerPreview" type="TextureRect" parent="CharacterContainer/Character4/Container/RacerPreviewContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 79.0
+offset_bottom = 79.0
+pivot_offset = Vector2(36, 36)
+texture = ExtResource("2_ds4go")
+
+[node name="RacerPreviewColor" type="TextureRect" parent="CharacterContainer/Character4/Container/RacerPreviewContainer/RacerPreview"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+offset_right = 72.0
+offset_bottom = 72.0
+pivot_offset = Vector2(36, 36)
+texture = ExtResource("3_7g2rv")
+
+[node name="ControllerContainer" type="HBoxContainer" parent="CharacterContainer/Character4/Container"]
+layout_mode = 2
+alignment = 1
+
+[node name="ControllerLabel" type="Label" parent="CharacterContainer/Character4/Container/ControllerContainer"]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_colors/font_outline_color = Color(0.243137, 0.243137, 0.243137, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "CPU"
+horizontal_alignment = 1
+
+[node name="DifficultyContainer" type="HBoxContainer" parent="CharacterContainer/Character4/Container"]
+layout_mode = 2
+alignment = 1
+
+[node name="DifficultyLabel" type="Label" parent="CharacterContainer/Character4/Container/DifficultyContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_colors/font_outline_color = Color(0.243137, 0.243137, 0.243137, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "MEDIUM"
+horizontal_alignment = 1
+
+[node name="DifficultyButton" type="Button" parent="CharacterContainer/Character4/Container/DifficultyContainer"]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_qnsu7")
+icon = ExtResource("8_2vxo6")
+expand_icon = true
+
+[node name="RemoveButton" type="Button" parent="CharacterContainer/Character4/Container"]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_qnsu7")
+theme_override_font_sizes/font_size = 20
+text = "REMOVE"
+
+[node name="AddCharacter" type="Button" parent="CharacterContainer/Character4"]
+visible = false
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("2_qnsu7")
+theme_override_font_sizes/font_size = 24
+icon = ExtResource("9_ug10i")
+expand_icon = true
+
+[node name="MapContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(640, 128)
+layout_mode = 0
+offset_left = 214.0
+offset_top = 320.0
+offset_right = 854.0
+offset_bottom = 448.0
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="MainMenuContainer" type="Control" parent="MapContainer"]
+custom_minimum_size = Vector2(208, 0)
+layout_mode = 2
+
+[node name="MainMenuButton" type="Button" parent="MapContainer/MainMenuContainer"]
+custom_minimum_size = Vector2(168, 32)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -45.0
+offset_right = 167.0
+offset_bottom = -13.0
+grow_vertical = 0
+focus_mode = 0
+theme = SubResource("Theme_7571v")
+theme_override_font_sizes/font_size = 24
+text = "MAIN MENU"
+
+[node name="MapPreview" type="TextureRect" parent="MapContainer"]
+custom_minimum_size = Vector2(170, 128)
+layout_mode = 2
+texture = ExtResource("4_fnv35")
+expand_mode = 2
+
+[node name="Border" type="Panel" parent="MapContainer/MapPreview"]
+show_behind_parent = true
+custom_minimum_size = Vector2(186, 144)
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 178.0
+offset_bottom = 136.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_us2nv")
+
+[node name="MapSelectContainer" type="VBoxContainer" parent="MapContainer"]
+layout_mode = 2
+theme_override_constants/separation = 42
+alignment = 1
+
+[node name="ChangeMapContainer" type="HBoxContainer" parent="MapContainer/MapSelectContainer"]
+custom_minimum_size = Vector2(176, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 2
+
+[node name="ChangeMapButton" type="Button" parent="MapContainer/MapSelectContainer/ChangeMapContainer"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_qnsu7")
+icon = ExtResource("8_2vxo6")
+expand_icon = true
+
+[node name="MapNameLabel" type="Label" parent="MapContainer/MapSelectContainer/ChangeMapContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_colors/font_outline_color = Color(0.243137, 0.243137, 0.243137, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "TRACK 1"
+
+[node name="PlayButton" type="Button" parent="MapContainer/MapSelectContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("6_yhtk3")
+theme_override_font_sizes/font_size = 24
+text = "PLAY"

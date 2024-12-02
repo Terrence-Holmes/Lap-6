@@ -1,0 +1,265 @@
+[gd_scene load_steps=9 format=3 uid="uid://bogftupwxnjq0"]
+
+[ext_resource type="Script" path="res://Assets/UI/Scripts/RC_GameUI.gd" id="1_asg6b"]
+[ext_resource type="FontFile" uid="uid://dmr10v1c54tq4" path="res://Assets/Fonts/Nihonium113.ttf" id="2_5c2d6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ifv2"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Theme" id="Theme_d1rvg"]
+Panel/styles/panel = SubResource("StyleBoxFlat_5ifv2")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3qkuw"]
+bg_color = Color(0.988235, 0.956863, 0, 0.392157)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.988235, 0.956863, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttmxr"]
+bg_color = Color(0.243137, 0.243137, 0.243137, 0.745098)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.243137, 0.243137, 0.243137, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qorl0"]
+bg_color = Color(0, 0, 0, 0.745098)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.505882, 0.505882, 0.505882, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Theme" id="Theme_7571v"]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_pressed_color = Color(0.505882, 0.505882, 0.505882, 1)
+Button/fonts/font = ExtResource("2_5c2d6")
+Button/styles/hover = SubResource("StyleBoxFlat_3qkuw")
+Button/styles/normal = SubResource("StyleBoxFlat_ttmxr")
+Button/styles/pressed = SubResource("StyleBoxFlat_qorl0")
+Label/fonts/font = ExtResource("2_5c2d6")
+
+[node name="GameUI" type="Control"]
+z_index = 10
+custom_minimum_size = Vector2(214, 480)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1706.0
+offset_bottom = -600.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_asg6b")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_d1rvg")
+
+[node name="GameContainer" type="VBoxContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(192, 416)
+layout_mode = 0
+offset_top = 32.0
+offset_right = 214.0
+offset_bottom = 448.0
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="PlayerLabel" type="Label" parent="GameContainer"]
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_colors/font_color = Color(1, 0.392157, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "Racer 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlaceLabel" type="Label" parent="GameContainer"]
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_font_sizes/font_size = 42
+text = "1st"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LapLabel" type="Label" parent="GameContainer"]
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_font_sizes/font_size = 42
+text = "LAP  1/6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="HBoxContainer" parent="GameContainer"]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+alignment = 1
+
+[node name="LineLeft" type="Control" parent="GameContainer/Timer"]
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+
+[node name="Line" type="ColorRect" parent="GameContainer/Timer/LineLeft"]
+layout_mode = 2
+offset_top = 34.0
+offset_right = 42.0
+offset_bottom = 38.0
+
+[node name="TimerContainer" type="Control" parent="GameContainer/Timer"]
+custom_minimum_size = Vector2(120, 42)
+layout_mode = 2
+
+[node name="TimerLabel" type="Label" parent="GameContainer/Timer/TimerContainer"]
+custom_minimum_size = Vector2(92, 0)
+layout_mode = 2
+offset_left = 22.0
+offset_top = 17.0
+offset_right = 114.0
+offset_bottom = 54.0
+theme = SubResource("Theme_7571v")
+theme_override_colors/font_color = Color(0.988235, 0.956863, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "00:00"
+vertical_alignment = 1
+
+[node name="LineRight" type="Control" parent="GameContainer/Timer"]
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+
+[node name="Line" type="ColorRect" parent="GameContainer/Timer/LineRight"]
+layout_mode = 2
+offset_top = 34.0
+offset_right = 42.0
+offset_bottom = 38.0
+
+[node name="PlayerLabel2" type="Label" parent="GameContainer"]
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_colors/font_color = Color(1, 0.392157, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "Racer 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlaceLabel2" type="Label" parent="GameContainer"]
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_font_sizes/font_size = 42
+text = "1st"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LapLabel2" type="Label" parent="GameContainer"]
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_font_sizes/font_size = 42
+text = "LAP  1/6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighscoreContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(192, 416)
+layout_mode = 0
+offset_top = 32.0
+offset_right = 214.0
+offset_bottom = 448.0
+theme_override_constants/separation = 8
+
+[node name="HighScoreLabel" type="Label" parent="HighscoreContainer"]
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_colors/font_color = Color(0.988235, 0.956863, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "HIGH SCORES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separator1" type="Control" parent="HighscoreContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="Map1Title" type="Label" parent="HighscoreContainer"]
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_colors/font_color = Color(1, 0.392157, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Track 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Map1Score" type="Label" parent="HighscoreContainer"]
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_font_sizes/font_size = 32
+text = "00.00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separator2" type="Control" parent="HighscoreContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="Map2Title" type="Label" parent="HighscoreContainer"]
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_colors/font_color = Color(1, 0.392157, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Track 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Map2Score" type="Label" parent="HighscoreContainer"]
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_font_sizes/font_size = 32
+text = "00.00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separator3" type="Control" parent="HighscoreContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="Map3Title" type="Label" parent="HighscoreContainer"]
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_colors/font_color = Color(1, 0.392157, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Track 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Map3Score" type="Label" parent="HighscoreContainer"]
+layout_mode = 2
+theme = SubResource("Theme_7571v")
+theme_override_font_sizes/font_size = 32
+text = "00.00"
+horizontal_alignment = 1
+vertical_alignment = 1

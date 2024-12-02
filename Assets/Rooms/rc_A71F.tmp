@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxk4juhpv5ay6"]
+
+[ext_resource type="Script" path="res://Assets/Control/Scripts/RC_GameManager.gd" id="1_c214o"]
+[ext_resource type="PackedScene" uid="uid://bwv6068ka2w5i" path="res://Assets/Driver/Scenes/rc_race_car.tscn" id="1_qbn6b"]
+[ext_resource type="PackedScene" uid="uid://bdpcyyopyudyo" path="res://Assets/Levels/Scenes/rc_level1.tscn" id="2_sbgmk"]
+[ext_resource type="PackedScene" uid="uid://bogftupwxnjq0" path="res://Assets/UI/Scenes/rc_game_ui.tscn" id="3_i8oxi"]
+[ext_resource type="PackedScene" uid="uid://bonebbs3npsni" path="res://Assets/UI/Scenes/rc_countdown.tscn" id="4_3vuna"]
+[ext_resource type="PackedScene" uid="uid://d3mqc0opa8dp3" path="res://Assets/UI/Scenes/rc_scoreboard.tscn" id="5_3iiik"]
+
+[node name="Arcade-Racer" type="Node2D"]
+script = ExtResource("1_c214o")
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(310, 240)
+
+[node name="Levels" type="Node2D" parent="."]
+position = Vector2(96, 0)
+
+[node name="Level_Test1" parent="Levels" instance=ExtResource("2_sbgmk")]
+
+[node name="Car" parent="." instance=ExtResource("1_qbn6b")]
+position = Vector2(216, 251)
+headingAtStart = 3
+player = 1
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="UI" instance=ExtResource("3_i8oxi")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 214.0
+offset_bottom = 480.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Countdown" parent="UI" instance=ExtResource("4_3vuna")]
+offset_left = 213.0
+offset_right = 853.0
+
+[node name="Scoreboard" parent="UI" instance=ExtResource("5_3iiik")]
+visible = false
+offset_left = 213.0
+offset_right = 853.0

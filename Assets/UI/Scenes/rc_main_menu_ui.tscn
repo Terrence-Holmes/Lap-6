@@ -1,0 +1,1158 @@
+[gd_scene load_steps=38 format=3 uid="uid://dy1sq5osxdmou"]
+
+[ext_resource type="Script" path="res://Assets/UI/Scripts/RC_MainMenuUI.gd" id="1_p5adf"]
+[ext_resource type="Texture2D" uid="uid://cggyfs8wk7fg0" path="res://Assets/UI/Sprites/RC_MainMenuBackground.png" id="2_c8lu7"]
+[ext_resource type="Texture2D" uid="uid://d07ylgqskwa4j" path="res://Assets/UI/Sprites/RC_Lap6Logo.png" id="3_mbf3p"]
+[ext_resource type="FontFile" uid="uid://dmr10v1c54tq4" path="res://Assets/Fonts/Nihonium113.ttf" id="4_m8abb"]
+[ext_resource type="Texture2D" uid="uid://g87bmul2w037" path="res://Assets/UI/Sprites/StarSprite.png" id="6_koffn"]
+[ext_resource type="Theme" uid="uid://c74y862xrye3v" path="res://Assets/UI/Themes/rc_theme_mainMenu.tres" id="6_xyxl5"]
+[ext_resource type="Texture2D" uid="uid://batwh5sgr6h78" path="res://Assets/UI/Sprites/RC_Music-On.png" id="7_6yjvl"]
+[ext_resource type="Texture2D" uid="uid://3p1qo6yb22y2" path="res://Assets/UI/Sprites/RC_Controls-AD.png" id="7_m086i"]
+[ext_resource type="Script" path="res://Assets/UI/Scripts/RC_Settings.gd" id="7_neplb"]
+[ext_resource type="Theme" uid="uid://ckeyukbkgh472" path="res://Assets/UI/Themes/rc_theme_volumeButton.tres" id="7_wav7l"]
+[ext_resource type="Texture2D" uid="uid://cgtfma3sf84af" path="res://Assets/UI/Sprites/RC_SFX-On.png" id="8_cgxga"]
+[ext_resource type="Texture2D" uid="uid://xccia013g8ph" path="res://Assets/UI/Sprites/RC_Controls-J.png" id="8_sqvy2"]
+[ext_resource type="Texture2D" uid="uid://dei0c7a61v55r" path="res://Assets/UI/Sprites/RC_Controls-K.png" id="9_tmdp1"]
+[ext_resource type="Texture2D" uid="uid://7mdwuie8kiua" path="res://Assets/UI/Sprites/RC_Controls-C.png" id="10_frlrc"]
+[ext_resource type="Texture2D" uid="uid://hc7uw7jk57t8" path="res://Assets/UI/Sprites/RC_Controls-P.png" id="10_odi5t"]
+[ext_resource type="Texture2D" uid="uid://cvehnyhi4v7gu" path="res://Assets/UI/Sprites/RC_ButtonHighlight.png" id="10_xdjhp"]
+[ext_resource type="Texture2D" uid="uid://bmotfhpttin17" path="res://Assets/UI/Sprites/RC_Controls-V.png" id="11_fghp4"]
+[ext_resource type="Texture2D" uid="uid://chtnf0r63m8bt" path="res://Assets/UI/Sprites/RC_Controls-LeftRight.png" id="12_qw202"]
+[ext_resource type="Texture2D" uid="uid://dxnmx1ngpjcah" path="res://Assets/UI/Sprites/RC_Controls-BracketL.png" id="13_cuh8l"]
+[ext_resource type="Texture2D" uid="uid://43523f2ca2ta" path="res://Assets/UI/Sprites/RC_Controls-BracketR.png" id="14_kyw1l"]
+
+[sub_resource type="Gradient" id="Gradient_ghocu"]
+offsets = PackedFloat32Array(0, 0.571429, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_umvy1"]
+gradient = SubResource("Gradient_ghocu")
+
+[sub_resource type="Curve" id="Curve_avysa"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.0114943, 0.504925), 0.0, 0.0, 0, 0, Vector2(0.0945946, 0.750258), 0.0, 0.0, 0, 0, Vector2(0.195332, 0.501859), 0.0, 0.0, 0, 0, Vector2(0.297297, 0.754286), 0.0, 0.0, 0, 0, Vector2(0.398034, 0.501859), 0.0, 0.0, 0, 0, Vector2(0.503686, 0.751601), 0.0, 0.0, 0, 0, Vector2(0.597052, 0.503202), 0.0, 0.0, 0, 0, Vector2(0.699017, 0.751601), 0.0, 0.0, 0, 0, Vector2(0.797297, 0.501859), 0.0, 0.0, 0, 0, Vector2(0.891892, 0.74623), 0.0, 0.0, 0, 0, Vector2(1, 0.504925), 0.0, 0.0, 0, 0]
+point_count = 12
+
+[sub_resource type="CurveTexture" id="CurveTexture_ygym5"]
+curve = SubResource("Curve_avysa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mtul6"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(320, 128, 1)
+angle_max = 359.0
+angular_velocity_min = -40.0
+angular_velocity_max = 40.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.6
+scale_curve = SubResource("CurveTexture_ygym5")
+color_ramp = SubResource("GradientTexture1D_umvy1")
+
+[sub_resource type="Animation" id="Animation_32wq3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HalfTitle/LogoTop:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-516, 16.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HalfTitle/LogoBottom:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(515, 50)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HalfTitle/Stars:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HalfTitle/Stars/Star1:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 3)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HalfTitle/Stars/Star2:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, 0.5)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HalfTitle/Stars/Star3:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, 0.5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HalfTitle/Stars/Star4:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, 0.5)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Flash:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Flash:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Title:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("HalfTitle:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../MenuContainer:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Settings:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_addxb"]
+resource_name = "Startup"
+length = 3.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HalfTitle/LogoTop:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-516, 16.5), Vector2(-516, 16.5), Vector2(0, 16.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HalfTitle/LogoBottom:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(516, 50), Vector2(516, 50), Vector2(0, 50)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HalfTitle/Stars:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.2, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HalfTitle/Stars/Star2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.2, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(50, 0.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HalfTitle/Stars/Star3:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.2, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(50, 0.5)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HalfTitle/Stars/Star4:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2.2, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(50, 0.5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HalfTitle/Stars/Star1:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.2, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(3, 3)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Flash:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Flash:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HalfTitle:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Title:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../MenuContainer:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("..")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 3.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_play_startup_sound"
+}, {
+"args": [],
+"method": &"_start_menu_music"
+}]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../Settings:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o8dda"]
+_data = {
+"RESET": SubResource("Animation_32wq3"),
+"Startup": SubResource("Animation_addxb")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8plnp"]
+bg_color = Color(0.988235, 0.956863, 0, 0.627451)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.988235, 0.956863, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3pye"]
+bg_color = Color(0.243137, 0.243137, 0.243137, 0.784314)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.243137, 0.243137, 0.243137, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s2n1w"]
+bg_color = Color(0, 0, 0, 0.745098)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.505882, 0.505882, 0.505882, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Theme" id="Theme_7571v"]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_pressed_color = Color(0.505882, 0.505882, 0.505882, 1)
+Button/fonts/font = ExtResource("4_m8abb")
+Button/styles/hover = SubResource("StyleBoxFlat_8plnp")
+Button/styles/normal = SubResource("StyleBoxFlat_c3pye")
+Button/styles/pressed = SubResource("StyleBoxFlat_s2n1w")
+Label/fonts/font = ExtResource("4_m8abb")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tktkw"]
+bg_color = Color(0, 0, 0, 0.784314)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hygp"]
+bg_color = Color(0.988235, 0.956863, 0, 0.627451)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.988235, 0.956863, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydjhn"]
+bg_color = Color(0.243137, 0.243137, 0.243137, 0.784314)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.243137, 0.243137, 0.243137, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7os3g"]
+bg_color = Color(0, 0, 0, 0.745098)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.505882, 0.505882, 0.505882, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Theme" id="Theme_0l3k0"]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_pressed_color = Color(0.505882, 0.505882, 0.505882, 1)
+Button/fonts/font = ExtResource("4_m8abb")
+Button/styles/hover = SubResource("StyleBoxFlat_5hygp")
+Button/styles/normal = SubResource("StyleBoxFlat_ydjhn")
+Button/styles/pressed = SubResource("StyleBoxFlat_7os3g")
+Label/fonts/font = ExtResource("4_m8abb")
+
+[node name="MainMenu" type="Control"]
+custom_minimum_size = Vector2(852, 480)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 480.0
+script = ExtResource("1_p5adf")
+
+[node name="Background" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BackgroundColor" type="ColorRect" parent="Background"]
+custom_minimum_size = Vector2(640, 480)
+layout_mode = 0
+offset_left = 214.0
+offset_right = 854.0
+offset_bottom = 480.0
+color = Color(0.27451, 0, 0.647059, 1)
+
+[node name="Stars" type="GPUParticles2D" parent="Background"]
+position = Vector2(534, 128)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_mtul6")
+texture = ExtResource("6_koffn")
+lifetime = 30.0
+preprocess = 30.0
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_left = 214.0
+offset_right = 854.0
+offset_bottom = 480.0
+texture = ExtResource("2_c8lu7")
+
+[node name="StartupAnimation" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="Title" type="Control" parent="StartupAnimation"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+anchors_preset = 0
+offset_left = 214.0
+offset_top = 44.0
+offset_right = 854.0
+offset_bottom = 172.0
+
+[node name="Logo" type="TextureRect" parent="StartupAnimation/Title"]
+layout_mode = 0
+offset_left = 136.0
+offset_right = 776.0
+offset_bottom = 112.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_mbf3p")
+
+[node name="Creator" type="Label" parent="StartupAnimation/Title"]
+layout_mode = 2
+offset_top = 71.0
+offset_right = 640.0
+offset_bottom = 94.0
+theme_override_fonts/font = ExtResource("4_m8abb")
+theme_override_font_sizes/font_size = 24
+text = "Created by Terrence Holmes"
+horizontal_alignment = 1
+
+[node name="HalfTitle" type="Control" parent="StartupAnimation"]
+visible = false
+anchors_preset = 0
+offset_left = 535.0
+offset_top = 44.0
+offset_right = 535.0
+offset_bottom = 44.0
+
+[node name="LogoTop" type="Sprite2D" parent="StartupAnimation/HalfTitle"]
+position = Vector2(-516, 16.5)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_mbf3p")
+region_enabled = true
+region_rect = Rect2(0, 0, 640, 56)
+
+[node name="LogoBottom" type="Sprite2D" parent="StartupAnimation/HalfTitle"]
+position = Vector2(515, 50)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_mbf3p")
+region_enabled = true
+region_rect = Rect2(0, 56, 640, 56)
+
+[node name="Stars" type="Control" parent="StartupAnimation/HalfTitle"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Star1" type="Sprite2D" parent="StartupAnimation/HalfTitle/Stars"]
+position = Vector2(0, 35)
+scale = Vector2(3, 3)
+texture = ExtResource("6_koffn")
+
+[node name="Star2" type="Sprite2D" parent="StartupAnimation/HalfTitle/Stars"]
+position = Vector2(0, 35)
+rotation = 2.70526
+scale = Vector2(50, 0.5)
+texture = ExtResource("6_koffn")
+
+[node name="Star3" type="Sprite2D" parent="StartupAnimation/HalfTitle/Stars"]
+position = Vector2(0, 35)
+rotation = -3.01069
+scale = Vector2(50, 0.5)
+texture = ExtResource("6_koffn")
+
+[node name="Star4" type="Sprite2D" parent="StartupAnimation/HalfTitle/Stars"]
+position = Vector2(0, 35)
+rotation = 3.09796
+scale = Vector2(50, 0.5)
+texture = ExtResource("6_koffn")
+
+[node name="Flash" type="ColorRect" parent="StartupAnimation"]
+visible = false
+z_index = 1
+custom_minimum_size = Vector2(640, 480)
+layout_mode = 0
+offset_left = 214.0
+offset_right = 854.0
+offset_bottom = 480.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StartupAnimation"]
+libraries = {
+"": SubResource("AnimationLibrary_o8dda")
+}
+
+[node name="MenuContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(640, 408)
+layout_mode = 0
+offset_left = 214.0
+offset_right = 854.0
+offset_bottom = 400.0
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Padding" type="Control" parent="MenuContainer"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="MenuContainer"]
+custom_minimum_size = Vector2(200, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("6_xyxl5")
+theme_override_font_sizes/font_size = 42
+text = "PLAY"
+
+[node name="ControlsButton" type="Button" parent="MenuContainer"]
+custom_minimum_size = Vector2(200, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("6_xyxl5")
+theme_override_font_sizes/font_size = 42
+text = "CONTROLS"
+
+[node name="QuitButton" type="Button" parent="MenuContainer"]
+custom_minimum_size = Vector2(200, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("6_xyxl5")
+theme_override_font_sizes/font_size = 42
+text = "QUIT"
+
+[node name="Settings" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(134, 0)
+layout_mode = 0
+offset_left = 700.0
+offset_top = 328.0
+offset_right = 834.0
+offset_bottom = 462.0
+theme_override_constants/separation = 8
+alignment = 2
+script = ExtResource("7_neplb")
+
+[node name="VolumeAdjust" type="Panel" parent="Settings"]
+visible = false
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="AdjustmentContainer" type="HBoxContainer" parent="Settings/VolumeAdjust"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Adjustment0" type="ColorRect" parent="Settings/VolumeAdjust/AdjustmentContainer"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="Settings/VolumeAdjust/AdjustmentContainer/Adjustment0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("7_wav7l")
+theme_override_font_sizes/font_size = 24
+
+[node name="Adjustment1" type="ColorRect" parent="Settings/VolumeAdjust/AdjustmentContainer"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="Settings/VolumeAdjust/AdjustmentContainer/Adjustment1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("7_wav7l")
+theme_override_font_sizes/font_size = 24
+
+[node name="Adjustment2" type="ColorRect" parent="Settings/VolumeAdjust/AdjustmentContainer"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="Settings/VolumeAdjust/AdjustmentContainer/Adjustment2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("7_wav7l")
+theme_override_font_sizes/font_size = 24
+
+[node name="Adjustment3" type="ColorRect" parent="Settings/VolumeAdjust/AdjustmentContainer"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="Settings/VolumeAdjust/AdjustmentContainer/Adjustment3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("7_wav7l")
+theme_override_font_sizes/font_size = 24
+
+[node name="Adjustment4" type="ColorRect" parent="Settings/VolumeAdjust/AdjustmentContainer"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="Settings/VolumeAdjust/AdjustmentContainer/Adjustment4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("7_wav7l")
+theme_override_font_sizes/font_size = 24
+
+[node name="Adjustment5" type="ColorRect" parent="Settings/VolumeAdjust/AdjustmentContainer"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="Settings/VolumeAdjust/AdjustmentContainer/Adjustment5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("7_wav7l")
+theme_override_font_sizes/font_size = 24
+
+[node name="BusContainer" type="HBoxContainer" parent="Settings"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="MusicButton" type="Button" parent="Settings/BusContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+focus_mode = 0
+theme = SubResource("Theme_7571v")
+theme_override_font_sizes/font_size = 24
+icon = ExtResource("7_6yjvl")
+expand_icon = true
+
+[node name="Highlight" type="TextureRect" parent="Settings/BusContainer/MusicButton"]
+visible = false
+layout_mode = 0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 37.0
+offset_bottom = 37.0
+texture = ExtResource("10_xdjhp")
+
+[node name="SFXButton" type="Button" parent="Settings/BusContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+focus_mode = 0
+theme = SubResource("Theme_7571v")
+theme_override_font_sizes/font_size = 24
+icon = ExtResource("8_cgxga")
+expand_icon = true
+
+[node name="Highlight" type="TextureRect" parent="Settings/BusContainer/SFXButton"]
+visible = false
+layout_mode = 0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 37.0
+offset_bottom = 37.0
+texture = ExtResource("10_xdjhp")
+
+[node name="FullScreenButton" type="Button" parent="Settings"]
+custom_minimum_size = Vector2(134, 54)
+layout_mode = 2
+focus_mode = 0
+theme = SubResource("Theme_7571v")
+theme_override_font_sizes/font_size = 24
+text = "Fullscreen
+(F11)"
+
+[node name="ControlScreen" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(512, 388)
+layout_mode = 0
+offset_left = 278.0
+offset_top = 46.0
+offset_right = 790.0
+offset_bottom = 434.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tktkw")
+
+[node name="MainContainer" type="VBoxContainer" parent="ControlScreen"]
+custom_minimum_size = Vector2(480, 348)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 496.0
+offset_bottom = 336.0
+
+[node name="Title" type="Label" parent="ControlScreen/MainContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m8abb")
+theme_override_font_sizes/font_size = 48
+text = "CONTROLS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separator0" type="ColorRect" parent="ControlScreen/MainContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+color = Color(1, 1, 1, 0.705882)
+
+[node name="1PlayerTitle" type="Label" parent="ControlScreen/MainContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m8abb")
+theme_override_font_sizes/font_size = 32
+text = "Solo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="1PlayerContainer" type="HBoxContainer" parent="ControlScreen/MainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Steering" type="VBoxContainer" parent="ControlScreen/MainContainer/1PlayerContainer"]
+layout_mode = 2
+
+[node name="Controls" type="CenterContainer" parent="ControlScreen/MainContainer/1PlayerContainer/Steering"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Image" type="TextureRect" parent="ControlScreen/MainContainer/1PlayerContainer/Steering/Controls"]
+layout_mode = 2
+texture = ExtResource("7_m086i")
+
+[node name="Label" type="Label" parent="ControlScreen/MainContainer/1PlayerContainer/Steering"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m8abb")
+theme_override_font_sizes/font_size = 28
+text = "STEERING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Gas" type="VBoxContainer" parent="ControlScreen/MainContainer/1PlayerContainer"]
+layout_mode = 2
+
+[node name="Controls" type="CenterContainer" parent="ControlScreen/MainContainer/1PlayerContainer/Gas"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Image" type="TextureRect" parent="ControlScreen/MainContainer/1PlayerContainer/Gas/Controls"]
+layout_mode = 2
+texture = ExtResource("8_sqvy2")
+
+[node name="Label" type="Label" parent="ControlScreen/MainContainer/1PlayerContainer/Gas"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m8abb")
+theme_override_font_sizes/font_size = 28
+text = "GAS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Drift" type="VBoxContainer" parent="ControlScreen/MainContainer/1PlayerContainer"]
+layout_mode = 2
+
+[node name="Controls" type="CenterContainer" parent="ControlScreen/MainContainer/1PlayerContainer/Drift"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Image" type="TextureRect" parent="ControlScreen/MainContainer/1PlayerContainer/Drift/Controls"]
+layout_mode = 2
+texture = ExtResource("9_tmdp1")
+
+[node name="Label" type="Label" parent="ControlScreen/MainContainer/1PlayerContainer/Drift"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m8abb")
+theme_override_font_sizes/font_size = 28
+text = "DRIFT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separator1" type="ColorRect" parent="ControlScreen/MainContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+color = Color(1, 1, 1, 0.705882)
+
+[node name="2PlayerTitle" type="Label" parent="ControlScreen/MainContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m8abb")
+theme_override_font_sizes/font_size = 32
+text = "Multiplayer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="2PlayerContainer" type="HBoxContainer" parent="ControlScreen/MainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Player1" type="VBoxContainer" parent="ControlScreen/MainContainer/2PlayerContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Player1Title" type="Label" parent="ControlScreen/MainContainer/2PlayerContainer/Player1"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m8abb")
+theme_override_font_sizes/font_size = 32
+text = "Player 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1Container" type="HBoxContainer" parent="ControlScreen/MainContainer/2PlayerContainer/Player1"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Steering" type="VBoxContainer" parent="ControlScreen/MainContainer/2PlayerContainer/Player1/Player1Container"]
+layout_mode = 2
+
+[node name="Controls" type="CenterContainer" parent="ControlScreen/MainContainer/2PlayerContainer/Player1/Player1Container/Steering"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Image" type="TextureRect" parent="ControlScreen/MainContainer/2PlayerContainer/Player1/Player1Container/Steering/Controls"]
+layout_mode = 2
+texture = ExtResource("7_m086i")
+
+[node name="Label" type="Label" parent="ControlScreen/MainContainer/2PlayerContainer/Player1/Player1Container/Steering"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m8abb")
+theme_override_font_sizes/font_size = 28
+text = "STEERING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Gas" type="VBoxContainer" parent="ControlScreen/MainContainer/2PlayerContainer/Player1/Player1Container"]
+layout_mode = 2
+
+[node name="Controls" type="CenterContainer" parent="ControlScreen/MainContainer/2PlayerContainer/Player1/Player1Container/Gas"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Image" type="TextureRect" parent="ControlScreen/MainContainer/2PlayerContainer/Player1/Player1Container/Gas/Controls"]
+layout_mode = 2
+texture = ExtResource("10_frlrc")
+
+[node name="Label" type="Label" parent="ControlScreen/MainContainer/2PlayerContainer/Player1/Player1Container/Gas"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m8abb")
+theme_override_font_sizes/font_size = 28
+text = "GAS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Drift" type="VBoxContainer" parent="ControlScreen/MainContainer/2PlayerContainer/Player1/Player1Container"]
+layout_mode = 2
+
+[node name="Controls" type="CenterContainer" parent="ControlScreen/MainContainer/2PlayerContainer/Player1/Player1Container/Drift"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Image" type="TextureRect" parent="ControlScreen/MainContainer/2PlayerContainer/Player1/Player1Container/Drift/Controls"]
+layout_mode = 2
+texture = ExtResource("11_fghp4")
+
+[node name="Label" type="Label" parent="ControlScreen/MainContainer/2PlayerContainer/Player1/Player1Container/Drift"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m8abb")
+theme_override_font_sizes/font_size = 28
+text = "DRIFT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separator0" type="ColorRect" parent="ControlScreen/MainContainer/2PlayerContainer"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0.705882)
+
+[node name="Player2" type="VBoxContainer" parent="ControlScreen/MainContainer/2PlayerContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Player2Title" type="Label" parent="ControlScreen/MainContainer/2PlayerContainer/Player2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m8abb")
+theme_override_font_sizes/font_size = 32
+text = "Player 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2Container" type="HBoxContainer" parent="ControlScreen/MainContainer/2PlayerContainer/Player2"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Steering" type="VBoxContainer" parent="ControlScreen/MainContainer/2PlayerContainer/Player2/Player2Container"]
+layout_mode = 2
+
+[node name="Controls" type="CenterContainer" parent="ControlScreen/MainContainer/2PlayerContainer/Player2/Player2Container/Steering"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Image" type="TextureRect" parent="ControlScreen/MainContainer/2PlayerContainer/Player2/Player2Container/Steering/Controls"]
+layout_mode = 2
+texture = ExtResource("12_qw202")
+
+[node name="Label" type="Label" parent="ControlScreen/MainContainer/2PlayerContainer/Player2/Player2Container/Steering"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m8abb")
+theme_override_font_sizes/font_size = 28
+text = "STEERING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Gas" type="VBoxContainer" parent="ControlScreen/MainContainer/2PlayerContainer/Player2/Player2Container"]
+layout_mode = 2
+
+[node name="Controls" type="CenterContainer" parent="ControlScreen/MainContainer/2PlayerContainer/Player2/Player2Container/Gas"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Image" type="TextureRect" parent="ControlScreen/MainContainer/2PlayerContainer/Player2/Player2Container/Gas/Controls"]
+layout_mode = 2
+texture = ExtResource("13_cuh8l")
+
+[node name="Label" type="Label" parent="ControlScreen/MainContainer/2PlayerContainer/Player2/Player2Container/Gas"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m8abb")
+theme_override_font_sizes/font_size = 28
+text = "GAS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Drift" type="VBoxContainer" parent="ControlScreen/MainContainer/2PlayerContainer/Player2/Player2Container"]
+layout_mode = 2
+
+[node name="Controls" type="CenterContainer" parent="ControlScreen/MainContainer/2PlayerContainer/Player2/Player2Container/Drift"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Image" type="TextureRect" parent="ControlScreen/MainContainer/2PlayerContainer/Player2/Player2Container/Drift/Controls"]
+layout_mode = 2
+texture = ExtResource("14_kyw1l")
+
+[node name="Label" type="Label" parent="ControlScreen/MainContainer/2PlayerContainer/Player2/Player2Container/Drift"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m8abb")
+theme_override_font_sizes/font_size = 28
+text = "DRIFT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separator2" type="ColorRect" parent="ControlScreen/MainContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+color = Color(1, 1, 1, 0.705882)
+
+[node name="Pause" type="HBoxContainer" parent="ControlScreen/MainContainer"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Controls" type="CenterContainer" parent="ControlScreen/MainContainer/Pause"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Image" type="TextureRect" parent="ControlScreen/MainContainer/Pause/Controls"]
+layout_mode = 2
+texture = ExtResource("10_odi5t")
+
+[node name="Label" type="Label" parent="ControlScreen/MainContainer/Pause"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m8abb")
+theme_override_font_sizes/font_size = 28
+text = "PAUSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="ControlScreen"]
+custom_minimum_size = Vector2(104, 32)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 136.0
+offset_top = -48.0
+offset_right = 240.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme = SubResource("Theme_0l3k0")
+theme_override_font_sizes/font_size = 24
+text = "BACK"

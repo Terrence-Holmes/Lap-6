@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3wnbd8cxvbkq"]
+
+[ext_resource type="Script" path="res://Assets/Driver/Scripts/RC_Tiremark.gd" id="1_xav63"]
+
+[sub_resource type="Gradient" id="Gradient_6olbk"]
+offsets = PackedFloat32Array(0, 0.688272)
+colors = PackedColorArray(0.243137, 0.243137, 0.243137, 0, 0.243137, 0.243137, 0.243137, 0.705882)
+
+[node name="Tiremark" type="Line2D"]
+width = 2.0
+default_color = Color(0.243137, 0.243137, 0.243137, 0.705882)
+gradient = SubResource("Gradient_6olbk")
+script = ExtResource("1_xav63")

@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://cc7ekrcl0c6wl"]
+
+[ext_resource type="Script" path="res://Assets/Control/Scripts/RC_ParticleEmitter.gd" id="1_opxdo"]
+[ext_resource type="Texture2D" uid="uid://coqc537oo52qs" path="res://Assets/Driver/Sprites/rc_particle_fire.png" id="2_8lf1y"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tao0t"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_q8np8"]
+offsets = PackedFloat32Array(0, 0.206081, 0.496622, 0.689189, 0.814189, 1)
+colors = PackedColorArray(1, 1, 1, 0.862745, 1, 1, 1, 0.862745, 0.988235, 0.956863, 0, 0.784314, 1, 0.392157, 0, 0.705882, 0.866667, 0.00784314, 0.00784314, 0.588235, 0.866667, 0.00784314, 0.00784314, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_g21h4"]
+gradient = SubResource("Gradient_q8np8")
+
+[sub_resource type="Curve" id="Curve_psw76"]
+_data = [Vector2(0, 0.247237), 0.0, 2.02913, 0, 0, Vector2(1, 1), 0.122636, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dmbp0"]
+curve = SubResource("Curve_psw76")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kpoa4"]
+particle_flag_disable_z = true
+angle_min = 180.0
+angle_max = 180.0
+direction = Vector3(0, 1, 0)
+spread = 35.0
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+damping_min = 0.5
+damping_max = 0.5
+scale_min = 0.2
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_dmbp0")
+color_ramp = SubResource("GradientTexture1D_g21h4")
+
+[node name="BoostParticleEmitter" type="Node2D"]
+script = ExtResource("1_opxdo")
+
+[node name="FlameLeft" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_tao0t")
+position = Vector2(-5, 5)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_kpoa4")
+texture = ExtResource("2_8lf1y")
+lifetime = 0.3
+local_coords = true
+
+[node name="FlameRight" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_tao0t")
+position = Vector2(5, 5)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_kpoa4")
+texture = ExtResource("2_8lf1y")
+lifetime = 0.3
+local_coords = true

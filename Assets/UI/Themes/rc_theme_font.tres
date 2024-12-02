@@ -1,0 +1,49 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://70k2tfyrxf4r"]
+
+[ext_resource type="FontFile" uid="uid://dmr10v1c54tq4" path="res://Assets/Fonts/Nihonium113.ttf" id="1_rbyiu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3qkuw"]
+bg_color = Color(0.988235, 0.956863, 0, 0.392157)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.988235, 0.956863, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttmxr"]
+bg_color = Color(0.243137, 0.243137, 0.243137, 0.745098)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.243137, 0.243137, 0.243137, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qorl0"]
+bg_color = Color(0, 0, 0, 0.745098)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.505882, 0.505882, 0.505882, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[resource]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_pressed_color = Color(0.505882, 0.505882, 0.505882, 1)
+Button/fonts/font = ExtResource("1_rbyiu")
+Button/styles/hover = SubResource("StyleBoxFlat_3qkuw")
+Button/styles/normal = SubResource("StyleBoxFlat_ttmxr")
+Button/styles/pressed = SubResource("StyleBoxFlat_qorl0")
+Label/fonts/font = ExtResource("1_rbyiu")

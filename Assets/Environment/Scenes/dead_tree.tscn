@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv8bjv4n8rq2x"]
+
+[ext_resource type="Texture2D" uid="uid://bmvw3dp6sipgc" path="res://Assets/Environment/Sprites/RC_DeadTree.png" id="1_ncxaa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kti7g"]
+radius = 8.0
+
+[node name="DeadTree" type="StaticBody2D"]
+z_index = 2
+z_as_relative = false
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(1, -2)
+texture = ExtResource("1_ncxaa")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kti7g")

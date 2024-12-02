@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://exalda4e2ykg"]
+
+[ext_resource type="Texture2D" uid="uid://lnmj5mx7w28g" path="res://Assets/Interactables/Sprites/RC_Boost.png" id="1_7u47j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ec0kf"]
+size = Vector2(26, 16)
+
+[node name="Boost" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_7u47j")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ec0kf")

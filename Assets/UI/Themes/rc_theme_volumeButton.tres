@@ -1,0 +1,37 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://ckeyukbkgh472"]
+
+[ext_resource type="FontFile" uid="uid://dmr10v1c54tq4" path="res://Assets/Fonts/Nihonium113.ttf" id="1_6oawv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkive"]
+bg_color = Color(1, 1, 1, 0.588235)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x35s5"]
+bg_color = Color(0.243137, 0.243137, 0.243137, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.243137, 0.243137, 0.243137, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hawbd"]
+bg_color = Color(0, 0, 0, 0.588235)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.505882, 0.505882, 0.505882, 1)
+
+[resource]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_pressed_color = Color(0.505882, 0.505882, 0.505882, 1)
+Button/fonts/font = ExtResource("1_6oawv")
+Button/styles/hover = SubResource("StyleBoxFlat_nkive")
+Button/styles/normal = SubResource("StyleBoxFlat_x35s5")
+Button/styles/pressed = SubResource("StyleBoxFlat_hawbd")
+Label/fonts/font = ExtResource("1_6oawv")

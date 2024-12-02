@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://c847an1mbhea3"]
+
+[ext_resource type="Script" path="res://Assets/Environment/Scripts/RC_Pond.gd" id="1_k88ux"]
+[ext_resource type="Shader" path="res://Assets/Environment/Shaders/water.gdshader" id="2_pp076"]
+
+[sub_resource type="Curve" id="Curve_7ho00"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49635, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_skjgg"]
+noise_type = 2
+domain_warp_enabled = true
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tdsy7"]
+width = 1536
+height = 1536
+seamless = true
+noise = SubResource("FastNoiseLite_skjgg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ya5dk"]
+shader = ExtResource("2_pp076")
+shader_parameter/paused = false
+shader_parameter/wave1Direction = Vector2(1, 0.6)
+shader_parameter/wave1Speed = 0.05
+shader_parameter/wave2Direction = Vector2(-1, -0.2)
+shader_parameter/wave2Speed = 0.08
+shader_parameter/waveIntensity = 0.415
+shader_parameter/waveScale = 1.5
+shader_parameter/bgColor = Color(0, 0.678431, 0.913725, 1)
+shader_parameter/waveColor = Color(1, 1, 1, 1)
+shader_parameter/time = 0.0
+shader_parameter/waveNoise = SubResource("NoiseTexture2D_tdsy7")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_s3ri8"]
+
+[node name="Pond" type="StaticBody2D"]
+position = Vector2(329, 248)
+collision_mask = 0
+script = ExtResource("1_k88ux")
+edgeThicknessCurve = SubResource("Curve_7ho00")
+
+[node name="Polygon" type="Polygon2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ya5dk")
+texture = SubResource("NoiseTexture2D_s3ri8")
+texture_scale = Vector2(2, 2)
+
+[node name="Edge" type="Line2D" parent="."]
+closed = true
+width = 2.0
+
+[node name="CollisionShape" type="CollisionPolygon2D" parent="."]
