@@ -306,4 +306,3 @@ static func _button_hovered():
 
 static func _button_pressed():
 	RC_SoundManager.play("MouseClick", true)
-

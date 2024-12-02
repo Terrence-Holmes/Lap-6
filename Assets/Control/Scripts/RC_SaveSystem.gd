@@ -56,4 +56,3 @@ static func _load_from_storage() -> Dictionary:
 		file.close()
 		return data
 	return {}
-

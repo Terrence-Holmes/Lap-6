@@ -101,9 +101,3 @@ func _record_race_data():
 			
 			var fileName : String = RC_GameManager.currentLevel.name + "_" + str(totalTime).pad_decimals(2)
 			RC_InputRecorder.save_data(recordedData, fileName)
-
-
-
-
-
-

@@ -213,5 +213,3 @@ func _activate_add_button(index : int):
 	get_add_character_button(2).visible = index == 2
 	get_add_character_button(3).visible = index == 3
 	get_add_character_button(4).visible = index == 4
-
-
