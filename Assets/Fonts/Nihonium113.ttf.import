@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/Nihonium113.ttf-4c6537fd7d5c8231891d00c27b280
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
+disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
