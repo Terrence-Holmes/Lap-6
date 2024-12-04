@@ -55,7 +55,7 @@ func _process(delta):
 			racecar.brakeInput = true
 		
 		#FOR AI BUILDING
-		_record_race_data()
+		#_record_race_data()
 
 
 

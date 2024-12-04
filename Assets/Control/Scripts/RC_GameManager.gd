@@ -79,6 +79,12 @@ func _ready():
 	
 	#await get_tree().create_timer(1).timeout
 	goto_screen("MAIN_MENU")
+	
+	
+	RC_Data.levelPrefabs = [
+		load("res://Assets/Levels/Scenes/rc_level1.tscn"),
+		load("res://Assets/Levels/Scenes/rc_level2.tscn"),
+		load("res://Assets/Levels/Scenes/rc_level3.tscn")]
 
 
 func _populate_ai_data():

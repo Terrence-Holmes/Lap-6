@@ -12,10 +12,12 @@ const colorOptions : Array[Color] = [
 
 ##Levels
 const levelScript = preload("res://Assets/Levels/Scripts/RC_Level.gd")
-const levelPrefabs : Array[PackedScene] = [
-	preload("res://Assets/Levels/Scenes/rc_level1.tscn"),
-	preload("res://Assets/Levels/Scenes/rc_level2.tscn"),
-	preload("res://Assets/Levels/Scenes/rc_level3.tscn")]
+#const levelPrefabs : Array[PackedScene] = [
+	#preload("res://Assets/Levels/Scenes/rc_level1.tscn"),
+	#preload("res://Assets/Levels/Scenes/rc_level2.tscn"),
+	#preload("res://Assets/Levels/Scenes/rc_level3.tscn")]
+
+static var levelPrefabs : Array[PackedScene] = []
 
 ##UI
 const characterSelectPrefab : PackedScene = preload("res://Assets/UI/Scenes/rc_character_select_ui.tscn")
