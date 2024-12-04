@@ -106,6 +106,11 @@ const _hitPulseDuration : float = 0.3
 const _hitPulseScale : float = 0.8
 var _hitPulseTimer : float = 0
 
+#Repeated collision fix
+var lastPosOrNegCorrection : float = 1
+var turnCorrectInverseCount : int = 0
+var collisionCorrectionTimer : float = 0
+const collisionCorrectionDuration : float = 0.5
 
 
 ##GETTERS
@@ -235,8 +240,6 @@ func _set_traction():
 		_traction = lerpf(_traction, _tractionRange.y, _controlRegain * get_process_delta_time() * 60)
 
 
-var lastPosOrNegCorrection : float = 1
-var turnCorrectInverseCount : int = 0
 func _detect_wall_hit():
 	if (_wallCheck.is_colliding()):
 		#Steer away from wall
@@ -248,9 +251,11 @@ func _detect_wall_hit():
 		#Use this to detect if player is stuck
 		if (Math.pos_or_neg(correctionAmount) != lastPosOrNegCorrection):
 			turnCorrectInverseCount += 1
+			collisionCorrectionTimer = collisionCorrectionDuration
 		else:
 			turnCorrectInverseCount = 0
 		lastPosOrNegCorrection = Math.pos_or_neg(correctionAmount)
+		
 		#Reverse player's heading if stuck
 		if (turnCorrectInverseCount > 8):
 			_headingAngle -= PI
@@ -266,7 +271,15 @@ func _detect_wall_hit():
 		
 		#Decrease velocity
 		_forwardVelocity *= 1 - _wallHitSlowdown
-		
+	
+	#Collision correction reset timer
+	if (collisionCorrectionTimer > 0):
+		collisionCorrectionTimer -= get_process_delta_time()
+		#Timeout
+		if (collisionCorrectionTimer <= 0):
+			collisionCorrectionTimer = 0
+			turnCorrectInverseCount = 0
+
 
 func _detect_grass():
 	#On grass

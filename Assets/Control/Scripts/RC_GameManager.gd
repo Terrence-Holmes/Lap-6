@@ -61,6 +61,8 @@ static var lapDictionary : Dictionary = {}
 #Screen change
 static var currentScreen : Node = null
 
+static var recordingAI : bool = false #This is set in RC_RaceCarInput.RC_RaceCarInput if _record_race_data() is called in RC_RaceCarInput._process()
+
 
 #Delegates
 static var updateLapCountUI : Callable
@@ -80,11 +82,9 @@ func _ready():
 	#await get_tree().create_timer(1).timeout
 	goto_screen("MAIN_MENU")
 	
-	
-	RC_Data.levelPrefabs = [
-		load("res://Assets/Levels/Scenes/rc_level1.tscn"),
-		load("res://Assets/Levels/Scenes/rc_level2.tscn"),
-		load("res://Assets/Levels/Scenes/rc_level3.tscn")]
+	#Set level prefabs
+	for levelPath in RC_Data.levelPaths:
+		RC_Data.levelPrefabs.append(load(levelPath))
 
 
 func _populate_ai_data():
@@ -154,7 +154,7 @@ func _update_timers():
 					break
 			if (racersComplete):
 				raceEndTimer = -1
-				raceEndDelayTimer = raceEndDelayDuration
+				raceEndDelayTimer = raceEndDelayDuration if (not recordingAI) else 5
 				return
 			
 			var lastRaceEndTimer : float = raceEndTimer

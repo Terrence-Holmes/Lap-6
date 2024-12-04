@@ -55,7 +55,7 @@ func _process(delta):
 			racecar.brakeInput = true
 		
 		#FOR AI BUILDING
-		#_record_race_data()
+		_record_race_data()
 
 
 
@@ -77,6 +77,7 @@ func _brake_input():
 var recordedData : Array = []
 var inputDataSaved : bool = false
 func _record_race_data():
+	RC_GameManager.recordingAI = true
 	if (RC_GameManager.currentLevel != null):
 		if (not racecar.raceComplete or racecar.velocity.length() > 1):
 			##Record data

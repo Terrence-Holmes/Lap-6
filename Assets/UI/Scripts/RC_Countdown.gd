@@ -27,7 +27,7 @@ func _process(delta):
 	_update_end_timer()
 
 func _update_end_timer():
-	if (RC_GameManager.raceEndTimer >= 0):
+	if (RC_GameManager.raceEndTimer >= 0 and RC_GameManager.lapDictionary.size() > 1):
 		gameEndLabel.visible = true
 		gameEndLabel.text = "RACE ENDS IN: " + str(floori( RC_GameManager.raceEndTimerDuration - RC_GameManager.raceEndTimer ))
 	else:

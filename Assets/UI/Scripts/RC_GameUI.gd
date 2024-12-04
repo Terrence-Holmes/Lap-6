@@ -58,9 +58,17 @@ func _update_placing():
 
 
 func _update_timer_label():
-	var newText : String = str( min(999.99,  (Time.get_ticks_msec() - RC_GameManager.raceStartTime) * 0.001)  ).pad_zeros(2).pad_decimals(2)
-	newText = newText.replace(".", ":")
-	timerLabel.text = newText
+	#Check if all racers have completed the race
+	var allRacersComplete : bool = true
+	for racecar in RC_GameManager.lapDictionary:
+		if (not racecar.raceComplete):
+			allRacersComplete = false
+			break
+	#Set timer text
+	if (not allRacersComplete):
+		var newText : String = str( min(999.99,  (Time.get_ticks_msec() - RC_GameManager.raceStartTime) * 0.001)  ).pad_zeros(2).pad_decimals(2)
+		newText = newText.replace(".", ":")
+		timerLabel.text = newText
 
 
 func _update_lap_label():
