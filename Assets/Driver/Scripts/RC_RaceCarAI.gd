@@ -8,9 +8,9 @@ var _movementData : Array = []
 var _positionIndex : int = 0
 
 
-func _ready():
-	pass
-	#_movementData = RC_InputRecorder.load_data("AIData_Level2_55.61.json", 1)
+#func _ready():
+	#await get_tree().create_timer(0.5).timeout
+	#_movementData = RC_InputRecorder.load_data("AIData_Level3_121.01.json", 3, "NEED_TO_BE_REVIEWED/")
 
 func _process(delta):
 	if (RC_GameManager.lapsToWin == 6 or not racecar.raceComplete): #This is just so that the race stops when testing with less than 6 laps

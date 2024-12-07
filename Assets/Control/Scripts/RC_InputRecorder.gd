@@ -22,8 +22,12 @@ static func save_data(content : Array, fileName : String):
 
 
 
-static func load_data(fileName : String, levelIndex : int) -> Array:
-	var filepath : String = str(pathTemplate + "Level" + str(levelIndex + 1) + "/")
+static func load_data(fileName : String, levelIndex : int, subFolder : String = "") -> Array:
+	var filepath : String
+	if (subFolder == ""):
+		filepath = str(pathTemplate + "Level" + str(levelIndex + 1) + "/")
+	else:
+		filepath = pathTemplate + subFolder
 	var path : String = filepath + fileName
 	if (FileAccess.file_exists(path)):
 		var file : FileAccess = FileAccess.open(path, FileAccess.READ)

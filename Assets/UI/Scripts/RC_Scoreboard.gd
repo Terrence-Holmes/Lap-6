@@ -32,7 +32,10 @@ func _ready():
 	#Attach button sounds
 	mainMenuButton.connect("mouse_entered", RC_GameManager._button_hovered)
 	mainMenuButton.connect("pressed", RC_GameManager._button_pressed)
-
+	
+	#Subscribe to delegates
+	RC_GameManager.onGotoScreen.append(_deactivate_highscore_input)
+	
 
 func _process(delta):
 	_get_high_score_input()
@@ -209,6 +212,11 @@ func deactivate():
 	
 	visible = false
 
+
+func _deactivate_highscore_input():
+	if (RC_GameManager.currentScreen != self):
+		highScoreName = "null"
+		instructions.visible = false
 
 
 func _main_menu_pressed():

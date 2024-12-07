@@ -73,6 +73,8 @@ func _update_timer_label():
 
 func _update_lap_label():
 	lapLabel.text = "LAP  " + str(clampi(RC_GameManager.currentPlayerLap + 1, 1, RC_GameManager.lapsToWin)) + "/" + str(RC_GameManager.lapsToWin)
+	if (RC_GameManager.player2 != null):
+		lapLabel2.text = "LAP  " + str(clampi(RC_GameManager.currentPlayer2Lap + 1, 1, RC_GameManager.lapsToWin)) + "/" + str(RC_GameManager.lapsToWin)
 
 
 func set_display(displayName : String):
@@ -86,6 +88,11 @@ func set_display(displayName : String):
 		lapLabel2.visible = (RC_GameManager.player2 != null)
 		gameContainer.alignment = BoxContainer.ALIGNMENT_BEGIN if (RC_GameManager.player2 == null) else BoxContainer.ALIGNMENT_CENTER
 	elif (displayName == "HIGHSCORE"):
+		timerLabel.text = "00:00"
+		lapLabel.text = "LAP  1/6"
+		lapLabel2.text = "LAP  1/6"
+		placeLabel.text = "1st"
+		placeLabel2.text = "1st"
 		#Update the highscore board
 		RC_SaveSystem.update_data()
 		for i in range(3):

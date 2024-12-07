@@ -53,6 +53,12 @@ static var currentPlayerLap : int:
 			return player1.lapsComplete
 		
 		return -1
+static var currentPlayer2Lap : int:
+	get:
+		if (player2 != null):
+			return player2.lapsComplete
+		
+		return -1
 #A dictionary containing each racer, and each of their lap times.
 # Key:value types are RC_RaceCar:Array[float]
 static var lapDictionary : Dictionary = {}

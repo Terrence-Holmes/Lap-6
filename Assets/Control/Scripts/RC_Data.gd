@@ -32,9 +32,9 @@ const AIDataFilepath : String = "res://Assets/Driver/AIData/"
 #The maximum amount of time (in seconds) to complete the race before the AI is set in a higher bracket.
 # x = Easy's maximum time, y = Medium's maximum time
 const difficultyMaxTime : Array[Vector2] = [
-	Vector2(40.0, 45.0),
-	Vector2(50.0, 55.0),
-	Vector2(70.0, 75.0)]
+	Vector2(40.0, 60.0),
+	Vector2(50.0, 70.0),
+	Vector2(80.0, 135.0)]
 
 
 ##High score name entry
